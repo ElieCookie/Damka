@@ -1,0 +1,18 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/eleanorborohov/CLionProjects/Damka_Project/general.h
+
+/Users/eleanorborohov/CLionProjects/Damka_Project/general_functions.c
+stdio.h
+-
+stdlib.h
+-
+general.h
+/Users/eleanorborohov/CLionProjects/Damka_Project/general.h
+
