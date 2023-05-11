@@ -1,19 +1,28 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "ex1/general_settings.h"
+#include "general_settings.h"
 
-void main(){
+int main(){
     // Initialize the board
     Board board;
     init_board(&board);
+
+    // Print the initial board
+    print_board(&board);
 
     Piece* Pieces = (Piece*)malloc(sizeof(Piece)*INITIAL_PIECE_NUM);
     if(Pieces == NULL)
         exit(1);
 
+    // top player pieces 
+    initPieces(Pieces, t_player, DOWN, board);
+    print_all_pieces(Pieces, T_pieces);
 
-    // Print the initial board
-    print_board(&board);
+    // bottom player pieces 
+    initPieces(Pieces, b_player, UP, board);
+    print_all_pieces(Pieces, B_pieces);
+
+    return 0;
 }
 
 
