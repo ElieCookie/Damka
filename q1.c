@@ -45,8 +45,8 @@ checkersPos* findDest(checkersPos *src, int direction, Player player){
         // going left
         if(direction == 0){
             if(src->col > '1' && src->row < 'H'){
-                dest->row = (src->row)++;
-                dest->col = (src->col)--;
+                dest->row = (src->row) + 1;
+                dest->col = (src->col) - 1;
                 return dest;
             }
             return NULL;
@@ -54,8 +54,8 @@ checkersPos* findDest(checkersPos *src, int direction, Player player){
         // going right
         else{
             if(src->col < '8' && src->row < 'H'){
-                dest->row = (src->row)++;
-                dest->col = (src->col)--;
+                dest->row = (src->row) + 1;
+                dest->col = (src->col) + 1;
                 return dest;
             }
             return NULL;
@@ -68,8 +68,8 @@ checkersPos* findDest(checkersPos *src, int direction, Player player){
         // going left
         if(direction == 0){
             if(src->col > '1' && src->row > 'B'){
-                dest->row = (src->row)--;
-                dest->col = (src->col)--;
+                dest->row = (src->row) - 1;
+                dest->col = (src->col) - 1;
                 return dest;
             }
             return NULL;
@@ -77,8 +77,8 @@ checkersPos* findDest(checkersPos *src, int direction, Player player){
             // going right
         else{
             if(src->col < '8' && src->row > 'B'){
-                dest->row = (src->row)--;
-                dest->col = (src->col)++;
+                dest->row = (src->row) - 1;
+                dest->col = (src->col) + 1;
                 return dest;
             }
             return NULL;
@@ -147,7 +147,7 @@ void copyBoard(Board *dest, Board src){
                 (*dest)[row][col] = GRAY;
             else if (src[row][col] == TOP_PLAYER)
                 (*dest)[row][col] = TOP_PLAYER;
-            else
+            else if (src[row][col] == BOTTOM_PLAYER)
                 (*dest)[row][col] = BOTTOM_PLAYER;
         }
     }
@@ -162,14 +162,17 @@ void addNextMove(Board board, checkersPos *dest, checkersPos *src,
     /// TO DO - update the board after each play
     copyBoard(&(next_move->board), board);
 
+
     if(direction == LEFT){
         if(!added_next_move)
             next_move->next_move[RIGHT] = NULL;
         if(is_capture) {
+            next_move->next_move[LEFT] = (SingleSourceMovesTreeNode*) malloc(sizeof(SingleSourceMovesTreeNode));
             next_move->next_move[LEFT]->pos = findDest(dest, direction, player);
             (next_move->total_captures_so_far)++;
         }
         else{
+            next_move->next_move[LEFT] = (SingleSourceMovesTreeNode*) malloc(sizeof(SingleSourceMovesTreeNode));
             next_move->next_move[LEFT]->pos = dest;
         }
     }
@@ -178,10 +181,12 @@ void addNextMove(Board board, checkersPos *dest, checkersPos *src,
         if(!added_next_move)
             next_move->next_move[LEFT] = NULL;
         if(is_capture) {
+            next_move->next_move[RIGHT] = (SingleSourceMovesTreeNode*) malloc(sizeof(SingleSourceMovesTreeNode));
             next_move->next_move[RIGHT]->pos = findDest(dest, direction, player);
             (next_move->total_captures_so_far)++;
         }
         else{
+            next_move->next_move[RIGHT] = (SingleSourceMovesTreeNode*) malloc(sizeof(SingleSourceMovesTreeNode));
             next_move->next_move[RIGHT]->pos = dest;
         }
     }
