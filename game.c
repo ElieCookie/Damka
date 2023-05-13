@@ -31,7 +31,15 @@ int main(){
     initPieces(Pieces, b_player, UP, board);
     print_all_pieces(Pieces, B_pieces);
 
+    checkersPos *src = (checkersPos*) malloc(sizeof(checkersPos));
+    src->row = 'C';
+    src->col = '2';
+    SingleSourceMovesTree* tr = FindSingleSourceMoves(board, src);
+    printf("\nmoves of C2:\n");
+    if(tr == NULL)
+        return 0;
 
+    PrintSingleSourceMovesTree(tr->source);
 
     return 0;
 }

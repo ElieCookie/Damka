@@ -12,3 +12,7 @@ CMakeFiles/Damka_Project.dir/general_settings.c.o: \
  ../general.h \
  ../general_settings.c \
  ../general_settings.h
+CMakeFiles/Damka_Project.dir/q1.c.o: \
+ ../general.h \
+ ../general_settings.h \
+ ../q1.c

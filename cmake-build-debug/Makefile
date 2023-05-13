@@ -201,6 +201,30 @@ general_settings.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Damka_Project.dir/build.make CMakeFiles/Damka_Project.dir/general_settings.c.s
 .PHONY : general_settings.c.s
 
+q1.o: q1.c.o
+.PHONY : q1.o
+
+# target to build an object file
+q1.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Damka_Project.dir/build.make CMakeFiles/Damka_Project.dir/q1.c.o
+.PHONY : q1.c.o
+
+q1.i: q1.c.i
+.PHONY : q1.i
+
+# target to preprocess a source file
+q1.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Damka_Project.dir/build.make CMakeFiles/Damka_Project.dir/q1.c.i
+.PHONY : q1.c.i
+
+q1.s: q1.c.s
+.PHONY : q1.s
+
+# target to generate assembly for a file
+q1.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Damka_Project.dir/build.make CMakeFiles/Damka_Project.dir/q1.c.s
+.PHONY : q1.c.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -219,6 +243,9 @@ help:
 	@echo "... general_settings.o"
 	@echo "... general_settings.i"
 	@echo "... general_settings.s"
+	@echo "... q1.o"
+	@echo "... q1.i"
+	@echo "... q1.s"
 .PHONY : help
 
 
