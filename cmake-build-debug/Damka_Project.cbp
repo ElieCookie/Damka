@@ -90,6 +90,9 @@
 		<Unit filename="/Users/eleanorborohov/CLionProjects/Damka_Project/general_functions.c">
 			<Option target="Damka_Project"/>
 		</Unit>
+		<Unit filename="/Users/eleanorborohov/CLionProjects/Damka_Project/q1.c">
+			<Option target="Damka_Project"/>
+		</Unit>
 		<Unit filename="/Users/eleanorborohov/CLionProjects/Damka_Project/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>

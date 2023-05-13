@@ -10,6 +10,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_CHECK_C
   "/Users/eleanorborohov/CLionProjects/Damka_Project/game.c" "/Users/eleanorborohov/CLionProjects/Damka_Project/cmake-build-debug/CMakeFiles/Damka_Project.dir/game.c.o"
   "/Users/eleanorborohov/CLionProjects/Damka_Project/general_functions.c" "/Users/eleanorborohov/CLionProjects/Damka_Project/cmake-build-debug/CMakeFiles/Damka_Project.dir/general_functions.c.o"
+  "/Users/eleanorborohov/CLionProjects/Damka_Project/q1.c" "/Users/eleanorborohov/CLionProjects/Damka_Project/cmake-build-debug/CMakeFiles/Damka_Project.dir/q1.c.o"
   )
 set(CMAKE_C_COMPILER_ID "AppleClang")
 
