@@ -153,53 +153,53 @@ game.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Damka_Project.dir/build.make CMakeFiles/Damka_Project.dir/game.c.s
 .PHONY : game.c.s
 
-general_functions.o: general_functions.c.o
-.PHONY : general_functions.o
+general.o: general.c.o
+.PHONY : general.o
 
 # target to build an object file
-general_functions.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Damka_Project.dir/build.make CMakeFiles/Damka_Project.dir/general_functions.c.o
-.PHONY : general_functions.c.o
+general.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Damka_Project.dir/build.make CMakeFiles/Damka_Project.dir/general.c.o
+.PHONY : general.c.o
 
-general_functions.i: general_functions.c.i
-.PHONY : general_functions.i
+general.i: general.c.i
+.PHONY : general.i
 
 # target to preprocess a source file
-general_functions.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Damka_Project.dir/build.make CMakeFiles/Damka_Project.dir/general_functions.c.i
-.PHONY : general_functions.c.i
+general.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Damka_Project.dir/build.make CMakeFiles/Damka_Project.dir/general.c.i
+.PHONY : general.c.i
 
-general_functions.s: general_functions.c.s
-.PHONY : general_functions.s
+general.s: general.c.s
+.PHONY : general.s
 
 # target to generate assembly for a file
-general_functions.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Damka_Project.dir/build.make CMakeFiles/Damka_Project.dir/general_functions.c.s
-.PHONY : general_functions.c.s
+general.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Damka_Project.dir/build.make CMakeFiles/Damka_Project.dir/general.c.s
+.PHONY : general.c.s
 
-q1.o: q1.c.o
-.PHONY : q1.o
+general_settings.o: general_settings.c.o
+.PHONY : general_settings.o
 
 # target to build an object file
-q1.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Damka_Project.dir/build.make CMakeFiles/Damka_Project.dir/q1.c.o
-.PHONY : q1.c.o
+general_settings.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Damka_Project.dir/build.make CMakeFiles/Damka_Project.dir/general_settings.c.o
+.PHONY : general_settings.c.o
 
-q1.i: q1.c.i
-.PHONY : q1.i
+general_settings.i: general_settings.c.i
+.PHONY : general_settings.i
 
 # target to preprocess a source file
-q1.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Damka_Project.dir/build.make CMakeFiles/Damka_Project.dir/q1.c.i
-.PHONY : q1.c.i
+general_settings.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Damka_Project.dir/build.make CMakeFiles/Damka_Project.dir/general_settings.c.i
+.PHONY : general_settings.c.i
 
-q1.s: q1.c.s
-.PHONY : q1.s
+general_settings.s: general_settings.c.s
+.PHONY : general_settings.s
 
 # target to generate assembly for a file
-q1.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Damka_Project.dir/build.make CMakeFiles/Damka_Project.dir/q1.c.s
-.PHONY : q1.c.s
+general_settings.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Damka_Project.dir/build.make CMakeFiles/Damka_Project.dir/general_settings.c.s
+.PHONY : general_settings.c.s
 
 # Help Target
 help:
@@ -213,12 +213,12 @@ help:
 	@echo "... game.o"
 	@echo "... game.i"
 	@echo "... game.s"
-	@echo "... general_functions.o"
-	@echo "... general_functions.i"
-	@echo "... general_functions.s"
-	@echo "... q1.o"
-	@echo "... q1.i"
-	@echo "... q1.s"
+	@echo "... general.o"
+	@echo "... general.i"
+	@echo "... general.s"
+	@echo "... general_settings.o"
+	@echo "... general_settings.i"
+	@echo "... general_settings.s"
 .PHONY : help
 
 

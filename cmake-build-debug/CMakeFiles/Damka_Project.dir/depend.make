@@ -3,7 +3,12 @@
 
 CMakeFiles/Damka_Project.dir/game.c.o: \
  ../game.c \
- ../general.h
-CMakeFiles/Damka_Project.dir/general_functions.c.o: \
  ../general.h \
- ../general_functions.c
+ ../general_settings.h
+CMakeFiles/Damka_Project.dir/general.c.o: \
+ ../general.c \
+ ../general.h
+CMakeFiles/Damka_Project.dir/general_settings.c.o: \
+ ../general.h \
+ ../general_settings.c \
+ ../general_settings.h

@@ -19,14 +19,7 @@ typedef struct _checkersPos{
 
 typedef unsigned char Board[BOARD_SIZE][BOARD_SIZE];
 typedef unsigned char Player;
-
-// Assign players
-Player t_player = 'T';
-Player b_player = 'B';
-
 typedef int PiecesNum;
-PiecesNum T_pieces = 12;
-PiecesNum B_pieces = 12;
 
 // Function prototypes
 void init_board(Board *board);

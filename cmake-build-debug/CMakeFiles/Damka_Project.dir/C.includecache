@@ -8,11 +8,17 @@
 
 /Users/eleanorborohov/CLionProjects/Damka_Project/general.h
 
-/Users/eleanorborohov/CLionProjects/Damka_Project/general_functions.c
+/Users/eleanorborohov/CLionProjects/Damka_Project/general_settings.c
 stdio.h
 -
 stdlib.h
 -
+general.h
+/Users/eleanorborohov/CLionProjects/Damka_Project/general.h
+general_settings.h
+/Users/eleanorborohov/CLionProjects/Damka_Project/general_settings.h
+
+/Users/eleanorborohov/CLionProjects/Damka_Project/general_settings.h
 general.h
 /Users/eleanorborohov/CLionProjects/Damka_Project/general.h
 

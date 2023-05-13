@@ -4,6 +4,8 @@
 #include <stdbool.h>
 
 bool isCorner(Board board, checkersPos *src){
+    int row = src->row - 'A';
+    int col = src->col - '0';
 
 }
 

@@ -79,44 +79,44 @@ CMakeFiles/Damka_Project.dir/game.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Damka_Project.dir/game.c.s"
 	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/eleanorborohov/CLionProjects/Damka_Project/game.c -o CMakeFiles/Damka_Project.dir/game.c.s
 
-CMakeFiles/Damka_Project.dir/general_functions.c.o: CMakeFiles/Damka_Project.dir/flags.make
-CMakeFiles/Damka_Project.dir/general_functions.c.o: ../general_functions.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/eleanorborohov/CLionProjects/Damka_Project/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/Damka_Project.dir/general_functions.c.o"
-	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Damka_Project.dir/general_functions.c.o -c /Users/eleanorborohov/CLionProjects/Damka_Project/general_functions.c
+CMakeFiles/Damka_Project.dir/general.c.o: CMakeFiles/Damka_Project.dir/flags.make
+CMakeFiles/Damka_Project.dir/general.c.o: ../general.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/eleanorborohov/CLionProjects/Damka_Project/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/Damka_Project.dir/general.c.o"
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Damka_Project.dir/general.c.o -c /Users/eleanorborohov/CLionProjects/Damka_Project/general.c
 
-CMakeFiles/Damka_Project.dir/general_functions.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Damka_Project.dir/general_functions.c.i"
-	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/eleanorborohov/CLionProjects/Damka_Project/general_functions.c > CMakeFiles/Damka_Project.dir/general_functions.c.i
+CMakeFiles/Damka_Project.dir/general.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Damka_Project.dir/general.c.i"
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/eleanorborohov/CLionProjects/Damka_Project/general.c > CMakeFiles/Damka_Project.dir/general.c.i
 
-CMakeFiles/Damka_Project.dir/general_functions.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Damka_Project.dir/general_functions.c.s"
-	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/eleanorborohov/CLionProjects/Damka_Project/general_functions.c -o CMakeFiles/Damka_Project.dir/general_functions.c.s
+CMakeFiles/Damka_Project.dir/general.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Damka_Project.dir/general.c.s"
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/eleanorborohov/CLionProjects/Damka_Project/general.c -o CMakeFiles/Damka_Project.dir/general.c.s
 
-CMakeFiles/Damka_Project.dir/q1.c.o: CMakeFiles/Damka_Project.dir/flags.make
-CMakeFiles/Damka_Project.dir/q1.c.o: ../q1.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/eleanorborohov/CLionProjects/Damka_Project/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/Damka_Project.dir/q1.c.o"
-	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Damka_Project.dir/q1.c.o -c /Users/eleanorborohov/CLionProjects/Damka_Project/q1.c
+CMakeFiles/Damka_Project.dir/general_settings.c.o: CMakeFiles/Damka_Project.dir/flags.make
+CMakeFiles/Damka_Project.dir/general_settings.c.o: ../general_settings.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/eleanorborohov/CLionProjects/Damka_Project/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/Damka_Project.dir/general_settings.c.o"
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Damka_Project.dir/general_settings.c.o -c /Users/eleanorborohov/CLionProjects/Damka_Project/general_settings.c
 
-CMakeFiles/Damka_Project.dir/q1.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Damka_Project.dir/q1.c.i"
-	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/eleanorborohov/CLionProjects/Damka_Project/q1.c > CMakeFiles/Damka_Project.dir/q1.c.i
+CMakeFiles/Damka_Project.dir/general_settings.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Damka_Project.dir/general_settings.c.i"
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/eleanorborohov/CLionProjects/Damka_Project/general_settings.c > CMakeFiles/Damka_Project.dir/general_settings.c.i
 
-CMakeFiles/Damka_Project.dir/q1.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Damka_Project.dir/q1.c.s"
-	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/eleanorborohov/CLionProjects/Damka_Project/q1.c -o CMakeFiles/Damka_Project.dir/q1.c.s
+CMakeFiles/Damka_Project.dir/general_settings.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Damka_Project.dir/general_settings.c.s"
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/eleanorborohov/CLionProjects/Damka_Project/general_settings.c -o CMakeFiles/Damka_Project.dir/general_settings.c.s
 
 # Object files for target Damka_Project
 Damka_Project_OBJECTS = \
 "CMakeFiles/Damka_Project.dir/game.c.o" \
-"CMakeFiles/Damka_Project.dir/general_functions.c.o" \
-"CMakeFiles/Damka_Project.dir/q1.c.o"
+"CMakeFiles/Damka_Project.dir/general.c.o" \
+"CMakeFiles/Damka_Project.dir/general_settings.c.o"
 
 # External object files for target Damka_Project
 Damka_Project_EXTERNAL_OBJECTS =
 
 Damka_Project: CMakeFiles/Damka_Project.dir/game.c.o
-Damka_Project: CMakeFiles/Damka_Project.dir/general_functions.c.o
-Damka_Project: CMakeFiles/Damka_Project.dir/q1.c.o
+Damka_Project: CMakeFiles/Damka_Project.dir/general.c.o
+Damka_Project: CMakeFiles/Damka_Project.dir/general_settings.c.o
 Damka_Project: CMakeFiles/Damka_Project.dir/build.make
 Damka_Project: CMakeFiles/Damka_Project.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/eleanorborohov/CLionProjects/Damka_Project/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking C executable Damka_Project"

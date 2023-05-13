@@ -1,58 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
-// #include "general.h"
+#include "general.h"
 #include "general_settings.h"
 
 //void find_moves_recursive(SingleSourceMovesTreeNode **node, int player, int depth);
-
-void init_board(Board *board) {
-    // Initialize the board to its starting position:
-    // the initial positions of the players & empty squares
-    for (int row = 0; row < BOARD_SIZE; row++) {
-        for (int col = 0; col < BOARD_SIZE; col++) {
-            if ((row + col) % 2 == 0) {
-                (*board)[row][col] = WHITE;
-            }
-            else if (row<3 && (row + col) % 2 == 1){
-                (*board)[row][col] = TOP_PLAYER;
-            }
-            else if (row>4 && (row + col) % 2 == 1){
-                (*board)[row][col] = BOTTOM_PLAYER;
-            }
-            else{
-                (*board)[row][col] = EMPTY;
-            }
-        }
-    }
-}
-
-void print_board(Board *board) {
-    // Print the board to the console
-    for (int row = 0; row < BOARD_SIZE; row++) {
-        for (int col = 0; col < BOARD_SIZE; col++) {
-            switch ((*board)[row][col]) {
-                case EMPTY:
-                    printf(" -");
-                    break;
-                case GRAY:
-                    printf(" g");
-                    break;
-                case WHITE:
-                    printf(" w");
-                    break;
-                case TOP_PLAYER:
-                    printf(" T");
-                    break;
-                case BOTTOM_PLAYER:
-                    printf(" B");
-                    break;
-                default:
-                    break;
-            }
-        }
-        printf("\n");
-    }
-}
 
 void init_single_source_moves_tree(SingleSourceMovesTree *moves){
     moves->source = NULL;
@@ -67,7 +18,7 @@ void initPieces(Piece *pieces, Player p, unsigned char direction, Board board) {
     int piece_count=0;
     int start_row, end_row;
 
-    if(p == t_player){
+    if(p == 'T'){
         start_row = 0;
         end_row = 2;
     }
@@ -98,7 +49,7 @@ void initPieces(Piece *pieces, Player p, unsigned char direction, Board board) {
 }
 
 void print_all_pieces(Piece *pieces, PiecesNum num){
-    for (int i = 0; i <= num; i++) {
+    for (int i = 0; i < num; i++) {
         printf("Pos: %c%c\nPlayer: %c\n", pieces[i].pos->row, pieces[i].pos->col, pieces[i].player);
     }
 }
