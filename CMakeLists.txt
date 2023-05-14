@@ -3,4 +3,4 @@ project(Damka_Project C)
 
 set(CMAKE_C_STANDARD 99)
 
-add_executable(Damka_Project game.c general.c general_settings.c)
+add_executable(Damka_Project game.c general.c general_settings.c q1.c)

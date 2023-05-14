@@ -2,6 +2,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/Damka_Project.dir/game.c.o"
   "CMakeFiles/Damka_Project.dir/general.c.o"
   "CMakeFiles/Damka_Project.dir/general_settings.c.o"
+  "CMakeFiles/Damka_Project.dir/q1.c.o"
   "Damka_Project"
   "Damka_Project.pdb"
 )

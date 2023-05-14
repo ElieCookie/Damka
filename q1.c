@@ -2,16 +2,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
-
-bool isCorner(checkersPos *src){
-    int row = src->row - 'A';
-    int col = src->col - '0' - 1;
-
-    if((row == 0 && col == 0) || (row == 0 && col == 7) || (row == 7 && col == 0) || (row == 7 && col == 7)){
-        return true;
-    }
-    return false;
-}
+#include <string.h>
+#define LEFT 0
+#define RIGHT 1
 
 bool isBlockedBySame(Board board, checkersPos *dest, Player player){
     int row = dest->row - 'A';
@@ -26,7 +19,7 @@ bool isBlockedByOther(Board board, checkersPos *dest, Player player){
     int row = dest->row - 'A';
     int col = dest->col - '0' - 1;
 
-    if(((p == 'T') && (board[row][col] == 'B')) || ((p == 'B') && (board[row][col] == 'T')))
+    if(((player == 'T') && (board[row][col] == 'B')) || ((player == 'B') && (board[row][col] == 'T')))
         return true;
     return false;
 }
@@ -41,173 +34,151 @@ checkersPos* findDest(checkersPos *src, int direction, Player player){
 
         // going left
         if(direction == 0){
-            if(src->col > '1' && src->row < 'H'){
-                dest->row = src->row + 1;
-                dest->col = src->col - 1;
+                dest->row = (src->row) + 1;
+                dest->col = (src->col) - 1;
                 return dest;
-            }
-            return NULL;
         }
             // going right
         else{
-            if(src->col < '8' && src->row < 'H'){
-                dest->row = src->row + 1;
-                dest->col = src->col + 1;
+                dest->row = (src->row) + 1;
+                dest->col = (src->col) + 1;
                 return dest;
-            }
-            return NULL;
         }
     }
 
-    // going up
-    if(player == 'B'){
+        // going up
+    else if(player == 'B'){
 
         // going left
         if(direction == 0){
-            if(src->col > '1' && src->row > 'B'){
-                dest->row = src->row - 1;
-                dest->col = src->col - 1;
+                dest->row = (src->row) - 1;
+                dest->col = (src->col) - 1;
                 return dest;
-            }
-            return NULL;
         }
             // going right
         else{
-            if(src->col < '8' && src->row > 'B'){
-                dest->row = src->row - 1;
-                dest->col = src->col + 1;
+                dest->row = (src->row) - 1;
+                dest->col = (src->col) + 1;
                 return dest;
-            }
-            return NULL;
         }
     }
-}
-
-bool canCapture(Board board, checkersPos *dest, int direction, Player player){
-    /// if the checker after the other player's piece is blocked (doesn't matter by who) /
-    /// it is the corner (can check using the type of player and indexes of the src)
-    /// return false, else if the checker is empty we can capture.
-
-
-
-}
-
-///is Blocked By Corner from the left/right
-bool isBlockedByCorner(Board board, checkersPos *src, int direction){
-    int row = dest->row - 'A';
-    int col = dest->col - '0';
-
-    /// left , right
-    if(((direction == 0) && (col == 1)) || ((direction == 1) && (col == 8))){
-        return true;
-    }
     else
-        return false;
+        return NULL;
 }
 
 bool isEmptyChecker(Board board, checkersPos *dest){
     int row = dest->row - 'A';
     int col = dest->col - '0' - 1;
 
-    if(board[row][col] == EMPTY || board[row][col] == GRAY)
+    if(board[row][col] == EMPTY)
         return true;
     return false;
 }
 
-SingleSourceMovesTreeNode* FindSingleSourceMovesHelp(Board board, checkersPos *src,
-                                                     unsigned short total_captures_so_far, Player player){
+bool noPlayer(Board board, checkersPos *src){
+    int row = src->row - 'A';
+    int col = src->col - '0' - 1;
 
-    if(isCorner(src))
-        return NULL;
-
-    checkersPos *dest_left = findDest(src, 0, player);
-    checkersPos *dest_right = findDest(src, 1, player);
-
-
-
-    if(isBlockedBySame(board,  dest_left, player)){
-
-        if(isBlockedBySame(board,  dest_right, player) || isBlockedByCorner(board, src, 1, player))
-            return NULL;
-
-        else if(isBlockedByOther(board,  dest_right, player)){
-            /// check only the other --> if it is possible to capture
-        }
-        else{
-            /// add the empty option move to the moves
-        }
-    }
-
-
-    if(isBlockedByOther(board,  dest_left, player)){
-
-        if(isBlockedByCorner(board, src, 1, player) || isBlockedBySame(board,  dest_right, player)){
-            /// check only the other --> if it is possible to capture
-        }
-        else if(isBlockedByOther(board,  dest_right, player)){
-            /// need to check both sides --> if it is possible to capture
-        }
-        else{
-            /// add the empty to the moves + check the other --> if it is possible to capture
-        }
-    }
-
-
-    if(isBlockedByCorner(board, src, 0, player)){
-
-        if(isBlockedBySame(board,  dest_right, player)){
-            return NULL;
-        }
-        else if(isBlockedByOther(board,  dest_right, player)){
-            /// check only the other --> if it is possible to capture
-        }
-        else{
-            /// the checker is empty --> add to the moves
-        }
-
-    }
-
-    if(isEmptyChecker(board, dest_left)){
-        /// first add it to moves
-        /// continue checking the others:
-        if(isBlockedBySame(board,  dest_right, player) || isBlockedByCorner(board, src, 1, player)){
-            /// do nothing
-        }
-        else if(isBlockedByOther(board,  dest_right, player)){
-            /// check the other --> if it is possible to capture
-        }
-        else{
-            /// the right checker is empty too --> add it to the moves also
-        }
-    }
-
-
+    if(board[row][col] == EMPTY || board[row][col] == WHITE)
+        return true;
+    else
+        return false;
 }
 
-//typedef struct _SingleSourceMovesTreeNode{
-//    Board board;
-//    checkersPos *pos;
-//    unsigned short total_captures_so_far;
-//    struct _SingleSourceMovesTreeNode *next_move[2]; // move targets
-//} SingleSourceMovesTreeNode;
-//
-//typedef struct _SingleSourceMovesTree{
-//    SingleSourceMovesTreeNode *source;
-//}SingleSourceMovesTree;
+bool isCorruptedPos(checkersPos *src){
+    if(src->row > 'H' || src->row < 'A' || src->col > '8' || src->col < '1')
+        return true;
+    return false;
+}
 
+SingleSourceMovesTreeNode* FindSingleSourceMove(Board board, checkersPos *src, Player player,
+                                                unsigned short total_captures_so_far){
+    SingleSourceMovesTreeNode* left = NULL;
+    SingleSourceMovesTreeNode* right = NULL;
+
+    if(noPlayer(board, src) || isCorruptedPos(src))
+        return NULL;
+
+    else{
+        checkersPos* dest_left = findDest(src, LEFT, player);
+        checkersPos* dest_right = findDest(src, RIGHT, player);
+
+        /// left side
+        if(isBlockedBySame(board, dest_left, player)){
+            left = NULL;
+        }
+        else if(isBlockedByOther(board, dest_left, player))
+        {
+            checkersPos* cap_dest = findDest(dest_left, LEFT,player);
+            if(isEmptyChecker(board, cap_dest)) {
+                board[cap_dest->row - 'A'][cap_dest->col - '0' - 1] = player;
+                left = FindSingleSourceMove(board, cap_dest, player, total_captures_so_far + 1);
+            }
+            else {
+                left = NULL;
+            }
+        }
+        else if(isEmptyChecker(board, dest_left)) {
+            left = (SingleSourceMovesTreeNode*) malloc(sizeof(SingleSourceMovesTreeNode));
+            left->pos = dest_left;
+            left->total_captures_so_far = total_captures_so_far;
+        }
+
+        /// right side
+        if(isBlockedBySame(board, dest_right, player)){
+            right = NULL;
+        }
+        else if(isBlockedByOther(board, dest_right, player))
+        {
+            checkersPos* cap_dest = findDest(dest_right, RIGHT, player);
+
+            if(isEmptyChecker(board, cap_dest)) {
+                board[cap_dest->row - 'A'][cap_dest->col - '0' - 1] = player;
+                right = FindSingleSourceMove(board, cap_dest, player, total_captures_so_far + 1);
+            }
+            else {
+                right = NULL;
+            }
+        }
+        else if(isEmptyChecker(board, dest_right)) {
+            right = (SingleSourceMovesTreeNode*) malloc(sizeof(SingleSourceMovesTreeNode));
+            right->pos = dest_right;
+            right->total_captures_so_far = total_captures_so_far;
+        }
+    }
+
+    SingleSourceMovesTreeNode* root = (SingleSourceMovesTreeNode*) malloc(sizeof(SingleSourceMovesTreeNode));
+    if(root == NULL)
+        exit(1);
+
+    root->pos = src;
+    root->next_move[LEFT] = left;
+    root->next_move[RIGHT] = right;
+    root->total_captures_so_far = total_captures_so_far;
+    return root;
+}
 
 SingleSourceMovesTree* FindSingleSourceMoves(Board board, checkersPos *src){
     int row = src->row - 'A';
-    int col = src->col - '0';
+    int col = src->col - '0' - 1;
 
-    if(board[row][col] == WHITE || board[row][col] == EMPTY)
-        return NULL;
-    else{
-        SingleSourceMovesTree* tree = (SingleSourceMovesTree*)malloc(sizeof(SingleSourceMovesTree));
-        if(tree == NULL)
-            exit(1);
+    SingleSourceMovesTree* tree = (SingleSourceMovesTree*)malloc(sizeof(SingleSourceMovesTree));
+    if(tree == NULL)
+        exit(1);
 
-        /// call the helper
+    unsigned short total_captures_so_far = 0;
+    tree->source = FindSingleSourceMove(board, src, board[row][col], total_captures_so_far);
+    return tree;
+}
 
-    }
+void PrintSingleSourceMovesTree(SingleSourceMovesTreeNode* node){
+    if(node == NULL)
+        return;
+
+    if(node->pos == NULL)
+        return;
+
+    printf("move: %c%c\n", node->pos->row, node->pos->col);
+    PrintSingleSourceMovesTree(node->next_move[LEFT]);
+    PrintSingleSourceMovesTree(node->next_move[RIGHT]);
 }

@@ -5,6 +5,7 @@
 #include "stdio.h"
 #include "stdbool.h"
 #define max(a, b) a > b ? a : b
+
     typedef struct _SingleSourceMovesTreeNode{
         Board board;
         checkersPos *pos;
@@ -37,6 +38,8 @@
     void initPieces(Piece *pieces, Player p, unsigned char direction, Board board);
     void print_all_pieces(Piece *pieces, PiecesNum num);
     SingleSourceMovesTree* FindSingleSourceMoves(Board board, checkersPos *src);
+    void PrintSingleSourceMovesTree(SingleSourceMovesTreeNode* node);
+
     SingleSourceMovesList * FindSingleSourceOptimalMove(SingleSourceMovesTree* moves_tree);
     void FindSingleSourceOptimalMoveHelper(SingleSourceMovesTreeNode* moves_cell, char player, SingleSourceMovesList* res);
     int SubTreeHeight (SingleSourceMovesTreeNode* root);
