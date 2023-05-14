@@ -94,7 +94,7 @@ bool isBlockedByCorner(checkersPos *src, int direction){
     int col = src->col - '0';
 
         /// left , right
-        if(((direction == 0) && (col == 1)) || ((direction == 1) && (col == 8))){
+        if(((direction == LEFT) && (col == 1)) || ((direction == RIGHT) && (col == 8))){
             return true;
         }
         else
@@ -145,10 +145,14 @@ void copyBoard(Board *dest, Board src){
                 (*dest)[row][col] = EMPTY;
             else if (src[row][col] == GRAY)
                 (*dest)[row][col] = GRAY;
+            else if (src[row][col] == WHITE)
+                (*dest)[row][col] = WHITE;
             else if (src[row][col] == TOP_PLAYER)
                 (*dest)[row][col] = TOP_PLAYER;
             else if (src[row][col] == BOTTOM_PLAYER)
                 (*dest)[row][col] = BOTTOM_PLAYER;
+            else
+                return;
         }
     }
 }
@@ -202,9 +206,9 @@ SingleSourceMovesTreeNode* FindSingleSourceMovesHelp(Board board, checkersPos *s
     checkersPos *dest_left = findDest(src, LEFT, player);
     checkersPos *dest_right = findDest(src, RIGHT, player);
 
-    if(isBlockedBySame(board,  dest_left, player)){
+    if(dest_left!=NULL && isBlockedBySame(board,  dest_left, player)){
 
-        if(isBlockedBySame(board,  dest_right, player) || isBlockedByCorner(src, RIGHT))
+        if(isBlockedByCorner(src, RIGHT) || isBlockedBySame(board,  dest_right, player))
             return NULL;
 
         else if(isBlockedByOther(board,  dest_right, player)){
@@ -217,7 +221,8 @@ SingleSourceMovesTreeNode* FindSingleSourceMovesHelp(Board board, checkersPos *s
 
                 addNextMove(board, dest_right, src, true, RIGHT, player, new_move, false);
                 (*total_captures_so_far)++;
-                return FindSingleSourceMovesHelp(board, dest_right, total_captures_so_far, player);
+                new_move->next_move[RIGHT] = FindSingleSourceMovesHelp(board, dest_right, total_captures_so_far, player);
+                return new_move;
             }
             return NULL;
         }
@@ -228,12 +233,13 @@ SingleSourceMovesTreeNode* FindSingleSourceMovesHelp(Board board, checkersPos *s
                 exit(1);
 
             addNextMove(board, dest_right, src, false, RIGHT, player, new_move, false);
-            return FindSingleSourceMovesHelp(board, dest_right, total_captures_so_far, player);
+            new_move->next_move[RIGHT] = FindSingleSourceMovesHelp(board, dest_right, total_captures_so_far, player);
+            return new_move;
         }
     }
 
 
-    if(isBlockedByOther(board,  dest_left, player)){
+    if(dest_left!=NULL && isBlockedByOther(board,  dest_left, player)){
         SingleSourceMovesTreeNode* new_move;
 
         if(canCapture(board, dest_left, LEFT, player)){
@@ -250,7 +256,12 @@ SingleSourceMovesTreeNode* FindSingleSourceMovesHelp(Board board, checkersPos *s
         }
 
         if(isBlockedByCorner(src, RIGHT) || isBlockedBySame(board,  dest_right, player)){
-            return FindSingleSourceMovesHelp(board, dest_left, total_captures_so_far, player);
+            if(new_move == NULL)
+                new_move = (SingleSourceMovesTreeNode*) malloc(sizeof(SingleSourceMovesTreeNode));
+            if(new_move == NULL)
+                exit(1);
+            new_move->next_move[LEFT] = FindSingleSourceMovesHelp(board, dest_left, total_captures_so_far, player);
+            return new_move;
         }
         else if(isBlockedByOther(board,  dest_right, player)){
             /// need to check both sides --> if it is possible to capture
@@ -260,7 +271,8 @@ SingleSourceMovesTreeNode* FindSingleSourceMovesHelp(Board board, checkersPos *s
                     addNextMove(board, dest_right, src, true, RIGHT, player, new_move, added);
                     (*total_captures_so_far)++;
 
-                    return FindSingleSourceMovesHelp(board, dest_right, total_captures_so_far, player);
+                    new_move->next_move[RIGHT] = FindSingleSourceMovesHelp(board, dest_right, total_captures_so_far, player);
+                    return new_move;
                 }
                 else
                     added = true;
@@ -269,14 +281,15 @@ SingleSourceMovesTreeNode* FindSingleSourceMovesHelp(Board board, checkersPos *s
                 addNextMove(board, dest_right, src, true, RIGHT, player, new_move, added);
                 (*total_captures_so_far)++;
 
-                 FindSingleSourceMovesHelp(board, dest_left, total_captures_so_far, player);
-                 FindSingleSourceMovesHelp(board, dest_right, total_captures_so_far, player);
+                new_move->next_move[LEFT] = FindSingleSourceMovesHelp(board, dest_left, total_captures_so_far, player);
+                new_move->next_move[RIGHT] = FindSingleSourceMovesHelp(board, dest_right, total_captures_so_far, player);
             }
             else{
                 if(new_move == NULL)
                     return NULL;
 
-                return FindSingleSourceMovesHelp(board, dest_right, total_captures_so_far, player);
+                new_move->next_move[RIGHT] =  FindSingleSourceMovesHelp(board, dest_right, total_captures_so_far, player);
+                return new_move;
             }
         }
         else{
@@ -284,15 +297,20 @@ SingleSourceMovesTreeNode* FindSingleSourceMovesHelp(Board board, checkersPos *s
             if(new_move == NULL) {
                 added = false;
 
+                new_move = (SingleSourceMovesTreeNode*) malloc(sizeof(SingleSourceMovesTreeNode));
+                if(new_move == NULL)
+                    exit(1);
+
                 addNextMove(board, dest_right, src, false, RIGHT, player, new_move, added);
-                return FindSingleSourceMovesHelp(board, dest_right, total_captures_so_far, player);
+                new_move->next_move[RIGHT] =  FindSingleSourceMovesHelp(board, dest_right, total_captures_so_far, player);
+                return new_move;
             }
             else
                 added = true;
 
             addNextMove(board, dest_right, src, false, RIGHT, player, new_move, added);
-            FindSingleSourceMovesHelp(board, dest_left, total_captures_so_far, player);
-            FindSingleSourceMovesHelp(board, dest_right, total_captures_so_far, player);
+            new_move->next_move[LEFT] = FindSingleSourceMovesHelp(board, dest_left, total_captures_so_far, player);
+            new_move->next_move[RIGHT] = FindSingleSourceMovesHelp(board, dest_right, total_captures_so_far, player);
         }
     }
 
@@ -313,7 +331,8 @@ SingleSourceMovesTreeNode* FindSingleSourceMovesHelp(Board board, checkersPos *s
                 addNextMove(board, dest_right, src, true, RIGHT, player, new_move, false);
                 (*total_captures_so_far)++;
 
-                return FindSingleSourceMovesHelp(board, dest_right, total_captures_so_far, player);
+                new_move->next_move[RIGHT] =  FindSingleSourceMovesHelp(board, dest_right, total_captures_so_far, player);
+                return new_move;
             }
             else{
                 return NULL;
@@ -326,12 +345,13 @@ SingleSourceMovesTreeNode* FindSingleSourceMovesHelp(Board board, checkersPos *s
                 exit(1);
 
             addNextMove(board, dest_right, src, false, RIGHT, player, new_move, false);
-            return FindSingleSourceMovesHelp(board, dest_right, total_captures_so_far, player);
+            new_move->next_move[RIGHT] =  FindSingleSourceMovesHelp(board, dest_right, total_captures_so_far, player);
+            return new_move;
         }
 
     }
 
-    if(isEmptyChecker(board, dest_left)){
+    if(dest_left != NULL && isEmptyChecker(board, dest_left)){
         /// first add it to moves
         SingleSourceMovesTreeNode* new_move;
         new_move = (SingleSourceMovesTreeNode*) malloc(sizeof(SingleSourceMovesTreeNode));
@@ -339,10 +359,14 @@ SingleSourceMovesTreeNode* FindSingleSourceMovesHelp(Board board, checkersPos *s
             exit(1);
 
         addNextMove(board, dest_left, src, false, LEFT, player, new_move, false);
+        SingleSourceMovesTreeNode* tmp = FindSingleSourceMovesHelp(board, dest_left, total_captures_so_far, player);
+        if(!((tmp == NULL || tmp->pos == NULL) && new_move->next_move[LEFT]->pos != NULL))
+            new_move->next_move[LEFT] =  tmp;
 
         /// continue checking the others:
-        if(isBlockedBySame(board,  dest_right, player) || isBlockedByCorner(src, RIGHT)){
-            return FindSingleSourceMovesHelp(board, dest_left, total_captures_so_far, player);
+        if(isBlockedByCorner(src, RIGHT) || isBlockedBySame(board,  dest_right, player)){
+            new_move->next_move[LEFT] =  FindSingleSourceMovesHelp(board, dest_left, total_captures_so_far, player);
+            return new_move;
         }
         else if(isBlockedByOther(board,  dest_right, player)){
             /// check the other --> if it is possible to capture
@@ -350,19 +374,26 @@ SingleSourceMovesTreeNode* FindSingleSourceMovesHelp(Board board, checkersPos *s
                 /// add move also to new_move
                 addNextMove(board, dest_right, src, true, RIGHT, player, new_move, true);
                 (*total_captures_so_far)++;
-                return FindSingleSourceMovesHelp(board, dest_right, total_captures_so_far, player);
+                new_move->next_move[RIGHT] =  FindSingleSourceMovesHelp(board, dest_right, total_captures_so_far, player);
+                return new_move;
             }
             else{
-                return FindSingleSourceMovesHelp(board, dest_right, total_captures_so_far, player);
+                new_move->next_move[RIGHT] =  FindSingleSourceMovesHelp(board, dest_right, total_captures_so_far, player);
+                return new_move;
             }
         }
         else{
             /// the right checker is empty too --> add it to the moves also
             addNextMove(board, dest_right, src, false, RIGHT, player, new_move, true);
-            return FindSingleSourceMovesHelp(board, dest_right, total_captures_so_far, player);
+            SingleSourceMovesTreeNode* tmp = FindSingleSourceMovesHelp(board, dest_right, total_captures_so_far, player);
+            if((tmp == NULL || tmp->pos == NULL)  && new_move->next_move[RIGHT] != NULL)
+                return new_move;
+            else{
+                new_move->next_move[RIGHT] =  tmp;
+                return new_move;
+            }
         }
     }
-    return NULL;
 }
 
 SingleSourceMovesTree* FindSingleSourceMoves(Board board, checkersPos *src){
@@ -384,6 +415,9 @@ SingleSourceMovesTree* FindSingleSourceMoves(Board board, checkersPos *src){
 
 void PrintSingleSourceMovesTree(SingleSourceMovesTreeNode* node){
     if(node == NULL)
+        return;
+
+    if(node->pos == NULL)
         return;
 
     printf("move: %c%c\n", node->pos->row, node->pos->col);
