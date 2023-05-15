@@ -35,6 +35,18 @@
         SingleSourceMovesListCell* tail;
     } SingleSourceMovesList;
 
+    typedef struct _multipleSourceMovesListCell{
+       SingleSourceMovesList *single_source_moves_list;
+       struct _multipleSourceMovesListCell *next;
+    } MultipleSourceMovesListCell;
+
+    typedef struct _multipleSourceMovesList{
+        struct _multipleSourceMovesListCell *head;
+        struct _multipleSourceMovesListCell *tail;
+    } MultipleSourceMovesList;
+    
+    
+
     void initPieces(Piece *pieces, Player p, unsigned char direction, Board board);
     void print_all_pieces(Piece *pieces, PiecesNum num);
     SingleSourceMovesTree* FindSingleSourceMoves(Board board, checkersPos *src);
@@ -47,6 +59,10 @@
     bool isEmptyList(SingleSourceMovesList* lst);
     void addMovesListCellToStartList(SingleSourceMovesList* list, SingleSourceMovesListCell* cell);
     void addMovesListCellToEndOfList(SingleSourceMovesList* list, SingleSourceMovesListCell* cell);
+
+    MultipleSourceMovesList* FindAllPossiblePlayerMoves(Board board, Player player);
+
+
 #define makeEmptyList(list) { \
     (*list).head = (*list).tail = NULL;\
 }
