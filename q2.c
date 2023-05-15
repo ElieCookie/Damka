@@ -6,9 +6,11 @@
 
 SingleSourceMovesList * FindSingleSourceOptimalMove(SingleSourceMovesTree* moves_tree) {
     SingleSourceMovesList* res;
-    makeEmptyList(res);
+    //makeEmptyList(res);
+    //res->head = NULL;
+
     int currentPlayerSymbol = moves_tree->source->board[moves_tree->source->pos->row][moves_tree->source->pos->col];
-    FindSingleSourceOptimalMoveHelper(moves_tree->source, currentPlayerSymbol, res);
+    FindSingleSourceOptimalMoveHelper(moves_tree->source, 'T', res);
     return res;
 }
 

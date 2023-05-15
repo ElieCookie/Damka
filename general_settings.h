@@ -57,9 +57,10 @@
     int SubTreeHeight (SingleSourceMovesTreeNode* root);
     SingleSourceMovesListCell* createMovesListCell(checkersPos* position, unsigned short captures);
     bool isEmptyList(SingleSourceMovesList* lst);
+    bool isEmptyMultipleList(MultipleSourceMovesList* lst);
     void addMovesListCellToStartList(SingleSourceMovesList* list, SingleSourceMovesListCell* cell);
     void addMovesListCellToEndOfList(SingleSourceMovesList* list, SingleSourceMovesListCell* cell);
-
+    void addMultipleSourceMovesListCellToStartList(MultipleSourceMovesList* list, MultipleSourceMovesListCell* cell);
     MultipleSourceMovesList* FindAllPossiblePlayerMoves(Board board, Player player);
 
 

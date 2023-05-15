@@ -86,6 +86,11 @@ void addMovesListCellToStartList(SingleSourceMovesList* list, SingleSourceMovesL
     }
 }
 
+bool isEmptyMultipleList(MultipleSourceMovesList * lst) {
+    return lst->tail == NULL;
+}
+
+
 bool isEmptyList(SingleSourceMovesList* lst) {
     return lst->tail == NULL;
 }
