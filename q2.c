@@ -5,7 +5,7 @@
 #include "general_settings.h"
 
 SingleSourceMovesList * FindSingleSourceOptimalMove(SingleSourceMovesTree* moves_tree) {
-    SingleSourceMovesList* res;
+    SingleSourceMovesList* res = calloc(1, sizeof (SingleSourceMovesList));
     //makeEmptyList(res);
     //res->head = NULL;
 
@@ -18,7 +18,7 @@ SingleSourceMovesList * FindSingleSourceOptimalMove(SingleSourceMovesTree* moves
 void FindSingleSourceOptimalMoveHelper(SingleSourceMovesTreeNode* moves_cell, char player, SingleSourceMovesList* res) {
     if(moves_cell == NULL)
         return;
-    addMovesListCellToStartList(res, createMovesListCell(moves_cell->pos, moves_cell->total_captures_so_far));
+    addMovesListCellToEndOfList(res, createMovesListCell(moves_cell->pos, moves_cell->total_captures_so_far));
     if(moves_cell->next_move[0] == NULL && moves_cell->next_move[1] == NULL)
         return;
     else if(moves_cell->next_move[0] != NULL && moves_cell->next_move[1] == NULL)

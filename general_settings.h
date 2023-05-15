@@ -56,6 +56,7 @@
     void FindSingleSourceOptimalMoveHelper(SingleSourceMovesTreeNode* moves_cell, char player, SingleSourceMovesList* res);
     int SubTreeHeight (SingleSourceMovesTreeNode* root);
     SingleSourceMovesListCell* createMovesListCell(checkersPos* position, unsigned short captures);
+    MultipleSourceMovesListCell* createMultipleSourceMovesListCell(SingleSourceMovesList* lst);
     bool isEmptyList(SingleSourceMovesList* lst);
     bool isEmptyMultipleList(MultipleSourceMovesList* lst);
     void addMovesListCellToStartList(SingleSourceMovesList* list, SingleSourceMovesListCell* cell);

@@ -94,3 +94,10 @@ bool isEmptyMultipleList(MultipleSourceMovesList * lst) {
 bool isEmptyList(SingleSourceMovesList* lst) {
     return lst->tail == NULL;
 }
+
+MultipleSourceMovesListCell* createMultipleSourceMovesListCell(SingleSourceMovesList* lst){
+    MultipleSourceMovesListCell* cell = (MultipleSourceMovesListCell*)malloc(sizeof(MultipleSourceMovesListCell));
+    cell->single_source_moves_list = lst;
+    cell->next = NULL;
+    return cell;
+}

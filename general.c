@@ -51,3 +51,10 @@ void print_board(Board *board) {
         printf("\n");
     }
 }
+
+void checkMemoryAllocation(void* ptr) {
+    if(ptr == NULL) {
+        printf("Memory Allocation Failed");
+        exit(1);
+    }
+}

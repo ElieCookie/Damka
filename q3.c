@@ -14,7 +14,6 @@ void addMultipleSourceMovesListCellToStartList(MultipleSourceMovesList* list, Mu
 
 MultipleSourceMovesList* FindAllPossiblePlayerMoves(Board board, Player player) {
     MultipleSourceMovesList res;
-    MultipleSourceMovesListCell* temp = malloc(sizeof (MultipleSourceMovesListCell));
     makeEmptyList(&res);
     for(int row = 0; row < BOARD_SIZE; row++) {
         for(int col = 0; col< BOARD_SIZE; col++) {
@@ -23,9 +22,7 @@ MultipleSourceMovesList* FindAllPossiblePlayerMoves(Board board, Player player) 
                 src->row = row + 'A';
                 src->col = col + '1';
                 SingleSourceMovesTree* tr = FindSingleSourceMoves(board, src);
-                temp->next = NULL;
-                temp->single_source_moves_list = FindSingleSourceOptimalMove(tr);
-                addMultipleSourceMovesListCellToStartList(&res, temp);
+                addMultipleSourceMovesListCellToStartList(&res, createMultipleSourceMovesListCell(FindSingleSourceOptimalMove(tr)));
             }
         }
     }

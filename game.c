@@ -20,9 +20,7 @@ int main(){
     PiecesNum B_pieces = 12;
 
     Piece* Pieces = (Piece*)malloc(sizeof(Piece)*INITIAL_PIECE_NUM);
-    if(Pieces == NULL)
-        exit(1);
-
+    checkMemoryAllocation(Pieces);
     // top player pieces 
     initPieces(Pieces, t_player, DOWN, board);
     print_all_pieces(Pieces, T_pieces);
@@ -31,11 +29,11 @@ int main(){
     initPieces(Pieces, b_player, UP, board);
     print_all_pieces(Pieces, B_pieces);
 
-    board[2][3] = EMPTY;
-    board[5][4] = EMPTY;
-    board[7][6] = EMPTY;
-    board[3][2] = TOP_PLAYER;
-    board[4][3] = BOTTOM_PLAYER;
+//    board[2][3] = EMPTY;
+//    board[5][4] = EMPTY;
+//    board[7][6] = EMPTY;
+//    board[3][2] = TOP_PLAYER;
+//    board[4][3] = BOTTOM_PLAYER;
 
     checkersPos *src = (checkersPos*) malloc(sizeof(checkersPos));
     src->row = 'D';
