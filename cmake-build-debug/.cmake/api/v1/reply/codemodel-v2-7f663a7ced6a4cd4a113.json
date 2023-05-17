@@ -6,7 +6,6 @@
 			[
 				{
 					"build" : ".",
-					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
 					"minimumCMakeVersion" : 
 					{
 						"string" : "3.20"
@@ -39,7 +38,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "Damka_Project::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-Damka_Project-Debug-e86b490f8e8f4b2bf7eb.json",
+					"jsonFile" : "target-Damka_Project-Debug-3ff5ef86395536151edd.json",
 					"name" : "Damka_Project",
 					"projectIndex" : 0
 				}
@@ -49,12 +48,12 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "/Users/lidorlevi/Desktop/MTA/Advanced C Project/Damka/cmake-build-debug",
-		"source" : "/Users/lidorlevi/Desktop/MTA/Advanced C Project/Damka"
+		"build" : "/Users/eleanorborohov/CLionProjects/Damka_Project/cmake-build-debug",
+		"source" : "/Users/eleanorborohov/CLionProjects/Damka_Project"
 	},
 	"version" : 
 	{
 		"major" : 2,
-		"minor" : 4
+		"minor" : 2
 	}
 }

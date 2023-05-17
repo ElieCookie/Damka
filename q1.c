@@ -106,13 +106,18 @@ SingleSourceMovesTreeNode* FindSingleSourceMove(Board board, checkersPos *src, P
     {
         checkersPos* cap_dest = findDest(dest_left, LEFT,player);
         if(isEmptyChecker(board, cap_dest)) {
+            board[src->row - 'A'][src->col - '0' - 1] = EMPTY;
             board[cap_dest->row - 'A'][cap_dest->col - '0' - 1] = player;
+            board[dest_left->row - 'A'][dest_left->col - '0' - 1] = EMPTY;
             left = FindSingleSourceMove(board, cap_dest, player, total_captures_so_far + 1);
         }
         else
             left = NULL;
     }
     else if(isEmptyChecker(board, dest_left)) {
+        board[src->row - 'A'][src->col - '0' - 1] = EMPTY;
+        board[dest_left->row - 'A'][dest_left->col - '0' - 1] = player;
+
         left = (SingleSourceMovesTreeNode*) malloc(sizeof(SingleSourceMovesTreeNode));
         left->pos = dest_left;
         left->total_captures_so_far = total_captures_so_far;
@@ -125,12 +130,18 @@ SingleSourceMovesTreeNode* FindSingleSourceMove(Board board, checkersPos *src, P
         checkersPos* cap_dest = findDest(dest_right, RIGHT, player);
         if(isEmptyChecker(board, cap_dest)) {
             board[cap_dest->row - 'A'][cap_dest->col - '0' - 1] = player;
+            board[src->row - 'A'][src->col - '0' - 1] = EMPTY;
+            board[dest_right->row - 'A'][dest_right->col - '0' - 1] = EMPTY;
+
             right = FindSingleSourceMove(board, cap_dest, player, total_captures_so_far + 1);
         }
         else
             right = NULL;
     }
     else if(isEmptyChecker(board, dest_right)) {
+        board[src->row - 'A'][src->col - '0' - 1] = EMPTY;
+        board[dest_right->row - 'A'][dest_right->col - '0' - 1] = player;
+
         right = (SingleSourceMovesTreeNode*) malloc(sizeof(SingleSourceMovesTreeNode));
         right->pos = dest_right;
         right->total_captures_so_far = total_captures_so_far;
