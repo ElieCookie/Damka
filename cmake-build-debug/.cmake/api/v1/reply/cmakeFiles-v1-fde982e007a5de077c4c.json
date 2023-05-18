@@ -50,21 +50,6 @@
 		{
 			"isCMake" : true,
 			"isExternal" : true,
-			"path" : "/Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/CMakeFindCodeBlocks.cmake"
-		},
-		{
-			"isCMake" : true,
-			"isExternal" : true,
-			"path" : "/Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/CMakeExtraGeneratorDetermineCompilerMacrosAndIncludeDirs.cmake"
-		},
-		{
-			"isCMake" : true,
-			"isExternal" : true,
-			"path" : "/Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/ProcessorCount.cmake"
-		},
-		{
-			"isCMake" : true,
-			"isExternal" : true,
 			"path" : "/Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/CMakeCInformation.cmake"
 		},
 		{
@@ -121,8 +106,8 @@
 	"kind" : "cmakeFiles",
 	"paths" : 
 	{
-		"build" : "/Users/lidorlevi/Desktop/MTA/Advanced C Project/Damka/cmake-build-debug",
-		"source" : "/Users/lidorlevi/Desktop/MTA/Advanced C Project/Damka"
+		"build" : "/Users/lidor/Desktop/MTA Projects/AdvancedC/Project/Damka/cmake-build-debug",
+		"source" : "/Users/lidor/Desktop/MTA Projects/AdvancedC/Project/Damka"
 	},
 	"version" : 
 	{

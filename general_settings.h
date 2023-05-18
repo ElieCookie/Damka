@@ -65,7 +65,7 @@
     MultipleSourceMovesList* FindAllPossiblePlayerMoves(Board board, Player player);
     void Turn(Board board, Player player);
     int getMaximumCaptures (MultipleSourceMovesList* playerPossibleMoves);
-MultipleSourceMovesListCell* findRelevantCell(MultipleSourceMovesList* lst ,Player player, int captures);
+SingleSourceMovesListCell* findRelevantCell(MultipleSourceMovesList* lst ,Player player, int captures);
 #define makeEmptyList(list) { \
     (*list).head = (*list).tail = NULL;\
 }

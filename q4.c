@@ -18,6 +18,7 @@
 void Turn(Board board, Player player) {
     MultipleSourceMovesList* playerPossibleMoves = FindAllPossiblePlayerMoves(board,player);
     int maximumCaptures = getMaximumCaptures(playerPossibleMoves);
+    SingleSourceMovesListCell* cellToMove = findRelevantCell(playerPossibleMoves, player, maximumCaptures);
     int x = 0;
 }
 
@@ -32,11 +33,30 @@ int getMaximumCaptures (MultipleSourceMovesList* playerPossibleMoves) {
     return res;
 }
 
-MultipleSourceMovesListCell* findRelevantCell(MultipleSourceMovesList* lst ,Player player, int captures) {
-    if(player == TOP_PLAYER) {
+SingleSourceMovesListCell * findRelevantCell(MultipleSourceMovesList* lst ,Player player, int captures) {
+    MultipleSourceMovesListCell * tempMultiple = lst->head;
+    SingleSourceMovesList* tempSingle = tempMultiple->single_source_moves_list;;
+    SingleSourceMovesListCell* res = tempSingle->head;
+    while (tempMultiple != NULL) {
+        tempSingle = tempMultiple->single_source_moves_list;
+        if(tempSingle->tail->captures == captures) {
+            if (player == TOP_PLAYER) {
+                if(tempSingle->head->position->row > res->position->row)
+                    res = tempSingle->head;
+                else if (tempSingle->head->position->row == res->position->row)
+                    if(tempSingle->head->position->col > res->position->col)
+                        res = tempSingle->head;
+            }
+            else {
+                if(tempSingle->head->position->row < res->position->row)
+                    res = tempSingle->head;
+                else if (tempSingle->head->position->row == res->position->row)
+                    if(tempSingle->head->position->col < res->position->col)
+                        res = tempSingle->head;
 
+            }
+        }
+        tempMultiple = tempMultiple->next;
     }
-    else {
-
-    }
+    return res;
 }
