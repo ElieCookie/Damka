@@ -11,6 +11,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/Damka_Project.dir/q2.c.o.d"
   "CMakeFiles/Damka_Project.dir/q3.c.o"
   "CMakeFiles/Damka_Project.dir/q3.c.o.d"
+  "CMakeFiles/Damka_Project.dir/q4.c.o"
+  "CMakeFiles/Damka_Project.dir/q4.c.o.d"
   "Damka_Project"
   "Damka_Project.pdb"
 )

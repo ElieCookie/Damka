@@ -14,6 +14,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/Users/lidorlevi/Desktop/MTA/Advanced C Project/Damka/q1.c" "CMakeFiles/Damka_Project.dir/q1.c.o" "gcc" "CMakeFiles/Damka_Project.dir/q1.c.o.d"
   "/Users/lidorlevi/Desktop/MTA/Advanced C Project/Damka/q2.c" "CMakeFiles/Damka_Project.dir/q2.c.o" "gcc" "CMakeFiles/Damka_Project.dir/q2.c.o.d"
   "/Users/lidorlevi/Desktop/MTA/Advanced C Project/Damka/q3.c" "CMakeFiles/Damka_Project.dir/q3.c.o" "gcc" "CMakeFiles/Damka_Project.dir/q3.c.o.d"
+  "/Users/lidorlevi/Desktop/MTA/Advanced C Project/Damka/q4.c" "CMakeFiles/Damka_Project.dir/q4.c.o" "gcc" "CMakeFiles/Damka_Project.dir/q4.c.o.d"
   )
 
 # Targets to which this target links.

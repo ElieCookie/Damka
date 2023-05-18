@@ -273,6 +273,30 @@ q3.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Damka_Project.dir/build.make CMakeFiles/Damka_Project.dir/q3.c.s
 .PHONY : q3.c.s
 
+q4.o: q4.c.o
+.PHONY : q4.o
+
+# target to build an object file
+q4.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Damka_Project.dir/build.make CMakeFiles/Damka_Project.dir/q4.c.o
+.PHONY : q4.c.o
+
+q4.i: q4.c.i
+.PHONY : q4.i
+
+# target to preprocess a source file
+q4.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Damka_Project.dir/build.make CMakeFiles/Damka_Project.dir/q4.c.i
+.PHONY : q4.c.i
+
+q4.s: q4.c.s
+.PHONY : q4.s
+
+# target to generate assembly for a file
+q4.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Damka_Project.dir/build.make CMakeFiles/Damka_Project.dir/q4.c.s
+.PHONY : q4.c.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -300,6 +324,9 @@ help:
 	@echo "... q3.o"
 	@echo "... q3.i"
 	@echo "... q3.s"
+	@echo "... q4.o"
+	@echo "... q4.i"
+	@echo "... q4.s"
 .PHONY : help
 
 

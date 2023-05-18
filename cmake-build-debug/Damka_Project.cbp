@@ -102,6 +102,9 @@
 		<Unit filename="/Users/lidorlevi/Desktop/MTA/Advanced C Project/Damka/q3.c">
 			<Option target="Damka_Project"/>
 		</Unit>
+		<Unit filename="/Users/lidorlevi/Desktop/MTA/Advanced C Project/Damka/q4.c">
+			<Option target="Damka_Project"/>
+		</Unit>
 		<Unit filename="/Users/lidorlevi/Desktop/MTA/Advanced C Project/Damka/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
