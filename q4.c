@@ -19,8 +19,28 @@ void Turn(Board board, Player player) {
     MultipleSourceMovesList* playerPossibleMoves = FindAllPossiblePlayerMoves(board,player);
     int maximumCaptures = getMaximumCaptures(playerPossibleMoves);
     SingleSourceMovesListCell* cellToMove = findRelevantCell(playerPossibleMoves, player, maximumCaptures);
+    deleteCapturedCells(board,cellToMove,player);
     int x = 0;
 }
+
+void deleteCapturedCells(Board board, SingleSourceMovesListCell* cellToMove, Player player) {
+    if(cellToMove == NULL) return;
+
+    if(cellToMove->next->captures == 0) return;
+
+    if(player == TOP_PLAYER) {
+        if(cellToMove->next->position->col - cellToMove->position->col  == 2)  // Moved right
+            board[cellToMove->position->row+1][cellToMove->position->col+1] = EMPTY;
+        else board[cellToMove->position->row+1][cellToMove->position->col-1] = EMPTY;
+    }
+    else {
+        if(cellToMove->next->position->col - cellToMove->position->col  == 2)  // Moved right
+            board[cellToMove->position->row-1][cellToMove->position->col+1] = EMPTY;
+        else board[cellToMove->position->row-1][cellToMove->position->col-1] = EMPTY;
+    }
+    deleteCapturedCells(board, cellToMove->next, player);
+}
+
 
 int getMaximumCaptures (MultipleSourceMovesList* playerPossibleMoves) {
     int res = 0;
