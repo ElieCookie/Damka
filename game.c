@@ -35,17 +35,17 @@ int main(){
 //    board[3][2] = TOP_PLAYER;
 //    board[4][3] = BOTTOM_PLAYER;
 
-    checkersPos *src = (checkersPos*) malloc(sizeof(checkersPos));
-    src->row = 'D';
-    src->col = '3';
-    SingleSourceMovesTree* tr = FindSingleSourceMoves(board, src);
-    printf("\nmoves of C8:\n");
-    if(tr == NULL)
-        return 0;
-
-    PrintSingleSourceMovesTree(tr->source);
-    MultipleSourceMovesList* x = FindAllPossiblePlayerMoves(board, t_player);
-    Turn(board,b_player);
+//    checkersPos *src = (checkersPos*) malloc(sizeof(checkersPos));
+//    src->row = 'C';
+//    src->col = '2';
+//    SingleSourceMovesTree* tr = FindSingleSourceMoves(board, src);
+//    printf("\nmoves of C8:\n");
+//    if(tr == NULL)
+//        return 0;
+//
+//    PrintSingleSourceMovesTree(tr->source);
+//    MultipleSourceMovesList* x = FindAllPossiblePlayerMoves(board, t_player);
+    Turn(board,t_player);
     return 0;
 }
 

@@ -21,6 +21,7 @@ void Turn(Board board, Player player) {
     SingleSourceMovesListCell* cellToMove = findRelevantCell(playerPossibleMoves, player, maximumCaptures);
     deleteCapturedCells(board,cellToMove,player);
     int x = 0;
+    printf("The move is: %c%c\n", cellToMove->position->row, cellToMove->position->col);
 }
 
 void deleteCapturedCells(Board board, SingleSourceMovesListCell* cellToMove, Player player) {
