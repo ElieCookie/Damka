@@ -8,107 +8,107 @@
 		<Option virtualFolders="CMake Files\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="/Users/eleanorborohov/CLionProjects/Damka_Project/cmake-build-debug"/>
+				<Option working_dir="/Users/lidorlevi/Desktop/MTA/Advanced C Project/Damka/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/Users/eleanorborohov/CLionProjects/Damka_Project/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/eleanorborohov/CLionProjects/Damka_Project/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j8 -f &quot;/Users/eleanorborohov/CLionProjects/Damka_Project/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/eleanorborohov/CLionProjects/Damka_Project/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="rebuild_cache">
-				<Option working_dir="/Users/eleanorborohov/CLionProjects/Damka_Project/cmake-build-debug"/>
-				<Option type="4"/>
-				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/Users/eleanorborohov/CLionProjects/Damka_Project/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/eleanorborohov/CLionProjects/Damka_Project/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j8 -f &quot;/Users/eleanorborohov/CLionProjects/Damka_Project/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/eleanorborohov/CLionProjects/Damka_Project/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="edit_cache">
-				<Option working_dir="/Users/eleanorborohov/CLionProjects/Damka_Project/cmake-build-debug"/>
-				<Option type="4"/>
-				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/Users/eleanorborohov/CLionProjects/Damka_Project/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/eleanorborohov/CLionProjects/Damka_Project/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j8 -f &quot;/Users/eleanorborohov/CLionProjects/Damka_Project/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/eleanorborohov/CLionProjects/Damka_Project/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j10 -f &quot;/Users/lidorlevi/Desktop/MTA/Advanced\ C\ Project/Damka/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j10 -f &quot;/Users/lidorlevi/Desktop/MTA/Advanced\ C\ Project/Damka/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j10 -f &quot;/Users/lidorlevi/Desktop/MTA/Advanced\ C\ Project/Damka/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j10 -f &quot;/Users/lidorlevi/Desktop/MTA/Advanced\ C\ Project/Damka/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="Damka_Project">
-				<Option output="/Users/eleanorborohov/CLionProjects/Damka_Project/cmake-build-debug/Damka_Project" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/Users/eleanorborohov/CLionProjects/Damka_Project/cmake-build-debug"/>
+				<Option output="/Users/lidorlevi/Desktop/MTA/Advanced C Project/Damka/cmake-build-debug/Damka_Project" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/lidorlevi/Desktop/MTA/Advanced C Project/Damka/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
 					<Add directory="/usr/local/include"/>
-					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/12.0.0/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include"/>
 					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
-					<Add directory="/System/Library/Frameworks"/>
-					<Add directory="/Library/Frameworks"/>
+					<Add directory="/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/Users/eleanorborohov/CLionProjects/Damka_Project/cmake-build-debug/Makefile&quot;  VERBOSE=1 Damka_Project"/>
-					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/eleanorborohov/CLionProjects/Damka_Project/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j8 -f &quot;/Users/eleanorborohov/CLionProjects/Damka_Project/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/eleanorborohov/CLionProjects/Damka_Project/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j10 -f &quot;/Users/lidorlevi/Desktop/MTA/Advanced\ C\ Project/Damka/cmake-build-debug/Makefile&quot;  VERBOSE=1 Damka_Project"/>
+					<CompileFile command="/usr/bin/make -j10 -f &quot;/Users/lidorlevi/Desktop/MTA/Advanced\ C\ Project/Damka/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j10 -f &quot;/Users/lidorlevi/Desktop/MTA/Advanced\ C\ Project/Damka/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j10 -f &quot;/Users/lidorlevi/Desktop/MTA/Advanced\ C\ Project/Damka/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="Damka_Project/fast">
-				<Option output="/Users/eleanorborohov/CLionProjects/Damka_Project/cmake-build-debug/Damka_Project" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/Users/eleanorborohov/CLionProjects/Damka_Project/cmake-build-debug"/>
+				<Option output="/Users/lidorlevi/Desktop/MTA/Advanced C Project/Damka/cmake-build-debug/Damka_Project" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/lidorlevi/Desktop/MTA/Advanced C Project/Damka/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
 					<Add directory="/usr/local/include"/>
-					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/12.0.0/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include"/>
 					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
-					<Add directory="/System/Library/Frameworks"/>
-					<Add directory="/Library/Frameworks"/>
+					<Add directory="/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/Users/eleanorborohov/CLionProjects/Damka_Project/cmake-build-debug/Makefile&quot;  VERBOSE=1 Damka_Project/fast"/>
-					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/eleanorborohov/CLionProjects/Damka_Project/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j8 -f &quot;/Users/eleanorborohov/CLionProjects/Damka_Project/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/eleanorborohov/CLionProjects/Damka_Project/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j10 -f &quot;/Users/lidorlevi/Desktop/MTA/Advanced\ C\ Project/Damka/cmake-build-debug/Makefile&quot;  VERBOSE=1 Damka_Project/fast"/>
+					<CompileFile command="/usr/bin/make -j10 -f &quot;/Users/lidorlevi/Desktop/MTA/Advanced\ C\ Project/Damka/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j10 -f &quot;/Users/lidorlevi/Desktop/MTA/Advanced\ C\ Project/Damka/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j10 -f &quot;/Users/lidorlevi/Desktop/MTA/Advanced\ C\ Project/Damka/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/Users/lidorlevi/Desktop/MTA/Advanced C Project/Damka/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j10 -f &quot;/Users/lidorlevi/Desktop/MTA/Advanced\ C\ Project/Damka/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j10 -f &quot;/Users/lidorlevi/Desktop/MTA/Advanced\ C\ Project/Damka/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j10 -f &quot;/Users/lidorlevi/Desktop/MTA/Advanced\ C\ Project/Damka/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j10 -f &quot;/Users/lidorlevi/Desktop/MTA/Advanced\ C\ Project/Damka/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/Users/lidorlevi/Desktop/MTA/Advanced C Project/Damka/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j10 -f &quot;/Users/lidorlevi/Desktop/MTA/Advanced\ C\ Project/Damka/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j10 -f &quot;/Users/lidorlevi/Desktop/MTA/Advanced\ C\ Project/Damka/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j10 -f &quot;/Users/lidorlevi/Desktop/MTA/Advanced\ C\ Project/Damka/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j10 -f &quot;/Users/lidorlevi/Desktop/MTA/Advanced\ C\ Project/Damka/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/Users/eleanorborohov/CLionProjects/Damka_Project/game.c">
+		<Unit filename="/Users/lidorlevi/Desktop/MTA/Advanced C Project/Damka/game.c">
 			<Option target="Damka_Project"/>
 		</Unit>
-		<Unit filename="/Users/eleanorborohov/CLionProjects/Damka_Project/general.c">
+		<Unit filename="/Users/lidorlevi/Desktop/MTA/Advanced C Project/Damka/general.c">
 			<Option target="Damka_Project"/>
 		</Unit>
-		<Unit filename="/Users/eleanorborohov/CLionProjects/Damka_Project/general.h">
+		<Unit filename="/Users/lidorlevi/Desktop/MTA/Advanced C Project/Damka/general.h">
 			<Option target="Damka_Project"/>
 		</Unit>
-		<Unit filename="/Users/eleanorborohov/CLionProjects/Damka_Project/general_settings.c">
+		<Unit filename="/Users/lidorlevi/Desktop/MTA/Advanced C Project/Damka/general_settings.c">
 			<Option target="Damka_Project"/>
 		</Unit>
-		<Unit filename="/Users/eleanorborohov/CLionProjects/Damka_Project/general_settings.h">
+		<Unit filename="/Users/lidorlevi/Desktop/MTA/Advanced C Project/Damka/general_settings.h">
 			<Option target="Damka_Project"/>
 		</Unit>
-		<Unit filename="/Users/eleanorborohov/CLionProjects/Damka_Project/q1.c">
+		<Unit filename="/Users/lidorlevi/Desktop/MTA/Advanced C Project/Damka/q1.c">
 			<Option target="Damka_Project"/>
 		</Unit>
-		<Unit filename="/Users/eleanorborohov/CLionProjects/Damka_Project/q2.c">
+		<Unit filename="/Users/lidorlevi/Desktop/MTA/Advanced C Project/Damka/q2.c">
 			<Option target="Damka_Project"/>
 		</Unit>
-		<Unit filename="/Users/eleanorborohov/CLionProjects/Damka_Project/q3.c">
+		<Unit filename="/Users/lidorlevi/Desktop/MTA/Advanced C Project/Damka/q3.c">
 			<Option target="Damka_Project"/>
 		</Unit>
-		<Unit filename="/Users/eleanorborohov/CLionProjects/Damka_Project/q4.c">
+		<Unit filename="/Users/lidorlevi/Desktop/MTA/Advanced C Project/Damka/q4.c">
 			<Option target="Damka_Project"/>
 		</Unit>
-		<Unit filename="/Users/eleanorborohov/CLionProjects/Damka_Project/q5.c">
+		<Unit filename="/Users/lidorlevi/Desktop/MTA/Advanced C Project/Damka/q5.c">
 			<Option target="Damka_Project"/>
 		</Unit>
-		<Unit filename="/Users/eleanorborohov/CLionProjects/Damka_Project/CMakeLists.txt">
+		<Unit filename="/Users/lidorlevi/Desktop/MTA/Advanced C Project/Damka/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
 	</Project>

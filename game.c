@@ -46,6 +46,7 @@ int main(){
 //    PrintSingleSourceMovesTree(tr->source);
 //    MultipleSourceMovesList* x = FindAllPossiblePlayerMoves(board, t_player);
     Turn(board,t_player);
+    Turn(board, t_player);
     return 0;
 }
 
