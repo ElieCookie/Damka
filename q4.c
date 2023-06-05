@@ -15,20 +15,25 @@
 //
 
 
-void Turn(Board board, Player player) {
+void Turn(Board board, Player player, PiecesNum *opposing_pieces) {
     MultipleSourceMovesList* playerPossibleMoves = FindAllPossiblePlayerMoves(board,player);
     int maximumCaptures = getMaximumCaptures(playerPossibleMoves);
     SingleSourceMovesListCell* cellToMove = findRelevantCell(playerPossibleMoves, player, maximumCaptures);
+    // update number of pieces of opposing player
+    *opposing_pieces = *opposing_pieces - maximumCaptures;
     deleteCapturedCells(board,cellToMove,player);
     moveCell(board,cellToMove,player);
     int x = 0;
-    printf("The move is: %c%c\n", cellToMove->position->row, cellToMove->position->col);
+    printf("The move is from: %c%c, to: %c%c\n", cellToMove->position->row, cellToMove->position->col,
+           cellToMove->next->position->row, cellToMove->next->position->col);
 }
 
 void deleteCapturedCells(Board board, SingleSourceMovesListCell* cellToMove, Player player) {
-    if(cellToMove == NULL) return;
+    // added here cellToMove->next == NULL
+    if(cellToMove == NULL || cellToMove->next == NULL) return;
 
-    if(cellToMove->next->captures == 0) return;
+    // added here cellToMove->next != NULL
+    if(cellToMove->next != NULL && cellToMove->next->captures == 0) return;
 
     if(player == TOP_PLAYER) {
         if(cellToMove->next->position->col - cellToMove->position->col  == 2)  // Moved right

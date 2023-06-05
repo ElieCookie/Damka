@@ -63,7 +63,7 @@
     void addMovesListCellToEndOfList(SingleSourceMovesList* list, SingleSourceMovesListCell* cell);
     void addMultipleSourceMovesListCellToStartList(MultipleSourceMovesList* list, MultipleSourceMovesListCell* cell);
     MultipleSourceMovesList* FindAllPossiblePlayerMoves(Board board, Player player);
-    void Turn(Board board, Player player);
+    void Turn(Board board, Player player, PiecesNum *opposing_pieces);
     int getMaximumCaptures (MultipleSourceMovesList* playerPossibleMoves);
     void deleteCapturedCells(Board board, SingleSourceMovesListCell* cellToMove, Player player);
     SingleSourceMovesListCell* findRelevantCell(MultipleSourceMovesList* lst ,Player player, int captures);
