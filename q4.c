@@ -15,12 +15,10 @@
 //
 
 
-void Turn(Board board, Player player, PiecesNum *opposing_pieces) {
+void Turn(Board board, Player player) {
     MultipleSourceMovesList* playerPossibleMoves = FindAllPossiblePlayerMoves(board,player);
     int maximumCaptures = getMaximumCaptures(playerPossibleMoves);
     SingleSourceMovesListCell* cellToMove = findRelevantCell(playerPossibleMoves, player, maximumCaptures);
-    // update number of pieces of opposing player
-    *opposing_pieces = *opposing_pieces - maximumCaptures;
     deleteCapturedCells(board,cellToMove,player);
     moveCell(board,cellToMove,player);
     int x = 0;

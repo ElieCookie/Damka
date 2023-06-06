@@ -38,6 +38,18 @@ bool checkIfLastRow(Board board, Player player){
     }
 }
 
+int countPieces(Board board, Player player){
+    int pieces_counter = 0;
+
+    for(int row = 0; row < BOARD_SIZE; row++){
+        for(int col = 0; col < BOARD_SIZE; col++){
+            if(board[row][col] == player)
+                pieces_counter++;
+        }
+    }
+    return pieces_counter;
+}
+
 void PlayGame(Board board, Player starting_player){
 
     PiecesNum starting_pieces = 12;
@@ -56,17 +68,17 @@ void PlayGame(Board board, Player starting_player){
 
     while(!game_over){
 
-        Turn(board, starting_player, &opposing_pieces);
+        Turn(board, starting_player);
         printBoardStatus(board);
-        if(opposing_pieces == 0 || checkIfLastRow(board, starting_player)){
+        if(countPieces(board, opposing_player) == 0 || checkIfLastRow(board, starting_player)){
             game_over = true;
             printf("%c wins!\n", starting_player);
             break;
         }
 
-        Turn(board, opposing_player, &starting_pieces);
+        Turn(board, opposing_player);
         printBoardStatus(board);
-        if(starting_pieces == 0 || checkIfLastRow(board, opposing_player)){
+        if(countPieces(board, starting_player) || checkIfLastRow(board, opposing_player)){
             game_over = true;
             printf("%c wins!\n", opposing_player);
             break;
