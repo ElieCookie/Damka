@@ -72,27 +72,33 @@ int getMaximumCaptures (MultipleSourceMovesList* playerPossibleMoves) {
 SingleSourceMovesListCell * findRelevantCell(MultipleSourceMovesList* lst ,Player player, int captures) {
     MultipleSourceMovesListCell * tempMultiple = lst->head;
     SingleSourceMovesList* tempSingle = tempMultiple->single_source_moves_list;;
-    SingleSourceMovesListCell* res = tempSingle->head;
+    SingleSourceMovesListCell* res = NULL;
     while (tempMultiple != NULL) {
         tempSingle = tempMultiple->single_source_moves_list;
-        if(tempSingle->tail->captures == captures) {
-            if (player == TOP_PLAYER) {
-                if(tempSingle->head->position->row > res->position->row)
-                    res = tempSingle->head;
-                else if (tempSingle->head->position->row == res->position->row)
-                    if(tempSingle->head->position->col > res->position->col)
+        if(canMove(tempSingle->head)) {
+            if (tempSingle->tail->captures == captures) {
+                if (player == TOP_PLAYER) {
+                    if (res == NULL)
                         res = tempSingle->head;
-            }
-            else {
-                if(tempSingle->head->position->row < res->position->row)
-                    res = tempSingle->head;
-                else if (tempSingle->head->position->row == res->position->row)
-                    if(tempSingle->head->position->col < res->position->col)
+                    else if (tempSingle->head->position->row == res->position->row)
+                        res = tempSingle->head->position->col > res->position->col ? tempSingle->head : res;
+                    else
+                        res = tempSingle->head->position->row > res->position->row ? tempSingle->head : res;
+                } else {
+                    if (res == NULL)
                         res = tempSingle->head;
-
+                    else if (tempSingle->head->position->row == res->position->row)
+                        res = tempSingle->head->position->col > res->position->col ? res : tempSingle->head;
+                    else
+                        res = tempSingle->head->position->row > res->position->row ? res : tempSingle->head;
+                }
             }
         }
         tempMultiple = tempMultiple->next;
     }
     return res;
+}
+
+bool canMove(SingleSourceMovesListCell* lst) {
+    return lst->next != NULL;
 }
