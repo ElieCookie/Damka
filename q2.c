@@ -8,9 +8,9 @@ SingleSourceMovesList * FindSingleSourceOptimalMove(SingleSourceMovesTree* moves
     SingleSourceMovesList* res = calloc(1, sizeof (SingleSourceMovesList));
     //makeEmptyList(res);
     //res->head = NULL;
-
+    Player currentPlayer = moves_tree->source->board[moves_tree->source->pos->row][moves_tree->source->pos->col];
     int currentPlayerSymbol = moves_tree->source->board[moves_tree->source->pos->row][moves_tree->source->pos->col];
-    FindSingleSourceOptimalMoveHelper(moves_tree->source, 'T', res);
+    FindSingleSourceOptimalMoveHelper(moves_tree->source, currentPlayer, res);
     return res;
 }
 
