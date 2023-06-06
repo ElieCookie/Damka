@@ -50,83 +50,124 @@ int countPieces(Board board, Player player){
     return pieces_counter;
 }
 
-void PlayGame(Board board, Player starting_player){
+bool MakeTurn(Board board, Player p1, Player p2, PiecesNum *p1_pieces, PiecesNum *p2_pieces, int *p1_moves_count,
+              int *curr_p2_piece_count, int *max_p1_captures_count, int *max_p2_captures_count){
+    printf("%c's turn:\n", p1);
+    Turn(board, p1);
+    *p1_moves_count += 1;
+    printBoardStatus(board);
+
+    *curr_p2_piece_count = countPieces(board, p2);
+    *max_p1_captures_count = max(*max_p1_captures_count, *p2_pieces - *curr_p2_piece_count);
+
+    *p2_pieces = *curr_p2_piece_count;
+
+    if(*curr_p2_piece_count == 0 || checkIfLastRow(board, p1)){
+        printf("%c wins!\n%c performed %d moves.\n", p1,
+               p1, *p1_moves_count);
+
+        if(*max_p1_captures_count > *max_p2_captures_count)
+            printf("%c performed the highest number of captures in a single move - %d\n",
+                   p1, *max_p1_captures_count);
+        else
+            printf("%c performed the highest number of captures in a single move - %d\n",
+                   p2, *max_p2_captures_count);
+        return true;
+    }
+    return false;
+}
+
+void PlayGame(Board board, Player starting_player) {
 
     PiecesNum starting_pieces = 12;
     PiecesNum opposing_pieces = 12;
     Player opposing_player;
-    bool game_over = false;
+    bool starting_won = false, opposing_won = false;
     int max_starting_player_captures_count = 0, max_opposing_player_captures_count = 0,
-    starting_player_moves_count = 0, opposing_player_moves_count = 0,
-    curr_starting_piece_count, curr_opposing_piece_count;
+            starting_player_moves_count = 0, opposing_player_moves_count = 0,
+            curr_starting_piece_count, curr_opposing_piece_count;
 
 
     // Initialize opposing player
-    if(starting_player == 'T') {
+    if (starting_player == 'T') {
         opposing_player = 'B';
-    }
-    else {
+    } else {
         opposing_player = 'T';
     }
 
     // printing the initial board
     printBoardStatus(board);
 
-    while(!game_over){
+    while (!starting_won || !opposing_won) {
 
-        // starting player
-        printf("%c's turn:\n", starting_player);
-        Turn(board, starting_player);
-        starting_player_moves_count++;
-        printBoardStatus(board);
+        starting_won = MakeTurn(board, starting_player, opposing_player, &starting_pieces,
+                                &opposing_pieces, &starting_player_moves_count,
+                                &curr_opposing_piece_count,
+                                &max_starting_player_captures_count,
+                                &max_opposing_player_captures_count);
 
-        curr_opposing_piece_count = countPieces(board, opposing_player);
-        max_starting_player_captures_count = max(max_starting_player_captures_count,
-                                                 opposing_pieces - curr_opposing_piece_count);
-
-        opposing_pieces = curr_opposing_piece_count;
-
-        if(curr_opposing_piece_count == 0 || checkIfLastRow(board, starting_player)){
-            game_over = true;
-            printf("%c wins!\n%c performed %d moves.\n", starting_player,
-                   starting_player, starting_player_moves_count);
-
-            if(max_starting_player_captures_count > max_opposing_player_captures_count)
-                printf("%c performed the highest number of captures in a single move - %d\n",
-                       starting_player, max_starting_player_captures_count);
-            else
-                printf("%c performed the highest number of captures in a single move - %d\n",
-                       opposing_player, max_opposing_player_captures_count);
-            break;
-        }
-
-        // opposing player
-        printf("%c's turn:\n", opposing_player);
-        Turn(board, opposing_player);
-        opposing_player_moves_count++;
-        printBoardStatus(board);
-
-        curr_starting_piece_count = countPieces(board, starting_player);
-        max_opposing_player_captures_count = max(max_opposing_player_captures_count,
-                                                 starting_pieces - curr_starting_piece_count);
-
-        starting_pieces = curr_starting_piece_count;
-
-        if(curr_starting_piece_count == 0 || checkIfLastRow(board, opposing_player)){
-            game_over = true;
-            printf("%c wins!\n%c performed %d moves.\n", opposing_player,
-                   opposing_player, opposing_player_moves_count);
-
-            if(max_starting_player_captures_count > max_opposing_player_captures_count)
-                printf("%c performed the highest number of captures in a single move - %d\n",
-                       starting_player, max_starting_player_captures_count);
-            else
-                printf("%c performed the highest number of captures in a single move - %d\n",
-                       opposing_player, max_opposing_player_captures_count);
-            break;
-        }
-
+        opposing_won = MakeTurn(board, opposing_player, starting_player, &opposing_pieces,
+                                &starting_pieces, &opposing_player_moves_count,
+                                &curr_starting_piece_count,
+                                &max_opposing_player_captures_count,
+                                &max_starting_player_captures_count);
     }
-
-
 }
+
+//    while(!game_over){
+//
+//        // starting player
+//        printf("%c's turn:\n", starting_player);
+//        Turn(board, starting_player);
+//        starting_player_moves_count++;
+//        printBoardStatus(board);
+//
+//        curr_opposing_piece_count = countPieces(board, opposing_player);
+//        max_starting_player_captures_count = max(max_starting_player_captures_count,
+//                                                 opposing_pieces - curr_opposing_piece_count);
+//
+//        opposing_pieces = curr_opposing_piece_count;
+//
+//        if(curr_opposing_piece_count == 0 || checkIfLastRow(board, starting_player)){
+//            game_over = true;
+//            printf("%c wins!\n%c performed %d moves.\n", starting_player,
+//                   starting_player, starting_player_moves_count);
+//
+//            if(max_starting_player_captures_count > max_opposing_player_captures_count)
+//                printf("%c performed the highest number of captures in a single move - %d\n",
+//                       starting_player, max_starting_player_captures_count);
+//            else
+//                printf("%c performed the highest number of captures in a single move - %d\n",
+//                       opposing_player, max_opposing_player_captures_count);
+//            break;
+//        }
+//
+//        // opposing player
+//        printf("%c's turn:\n", opposing_player);
+//        Turn(board, opposing_player);
+//        opposing_player_moves_count++;
+//        printBoardStatus(board);
+//
+//        curr_starting_piece_count = countPieces(board, starting_player);
+//        max_opposing_player_captures_count = max(max_opposing_player_captures_count,
+//                                                 starting_pieces - curr_starting_piece_count);
+//
+//        starting_pieces = curr_starting_piece_count;
+//
+//        if(curr_starting_piece_count == 0 || checkIfLastRow(board, opposing_player)){
+//            game_over = true;
+//            printf("%c wins!\n%c performed %d moves.\n", opposing_player,
+//                   opposing_player, opposing_player_moves_count);
+//
+//            if(max_starting_player_captures_count > max_opposing_player_captures_count)
+//                printf("%c performed the highest number of captures in a single move - %d\n",
+//                       starting_player, max_starting_player_captures_count);
+//            else
+//                printf("%c performed the highest number of captures in a single move - %d\n",
+//                       opposing_player, max_opposing_player_captures_count);
+//            break;
+//        }
+//
+//    }
+//
+//}
