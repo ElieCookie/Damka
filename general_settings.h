@@ -69,6 +69,7 @@
     SingleSourceMovesListCell* findRelevantCell(MultipleSourceMovesList* lst ,Player player, int captures);
     void PlayGame(Board board, Player starting_player);
     void moveCell(Board board, SingleSourceMovesListCell* cellToMove, Player player);
+    bool canMove(SingleSourceMovesListCell* lst);
 #define makeEmptyList(list) { \
     (*list).head = (*list).tail = NULL;\
 }

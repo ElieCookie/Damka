@@ -45,7 +45,7 @@ int SubTreeHeight (SingleSourceMovesTreeNode* root) {
     else {
         heightLeft = SubTreeHeight(root->next_move[0]);
         heightRight = SubTreeHeight(root->next_move[1]);
-        return 1 + max(heightLeft, heightRight);
+        return (max(heightLeft, heightRight) + 1);
     }
 }
 
