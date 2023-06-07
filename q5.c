@@ -24,7 +24,7 @@ void printBoardStatus(Board board){
 bool checkIfLastRow(Board board, Player player){
     if(player == 'T'){
         for(int i = 0; i<BOARD_SIZE; i+=2){
-            if(board[BOARD_SIZE][i] == player)
+            if(board[BOARD_SIZE - 1][i] == player)
                 return true;
         }
         return false;

@@ -3,7 +3,6 @@
 #include "general.h"
 #include "general_settings.h"
 
-
 int main(){
     // Initialize the board
     Board board;
@@ -49,7 +48,12 @@ int main(){
 //    Turn(board,t_player, &B_pieces);
 //    Turn(board, t_player, &T_pieces);
 
-    PlayGame(board, t_player);
+//    board[7][0] = TOP_PLAYER;
+//    board[0][7] = BOTTOM_PLAYER;
+//    bool k = checkIfLastRowCo(board, t_player);
+//    bool j = checkIfLastRowCo(board, b_player);
+
+   PlayGame(board, t_player);
     return 0;
 }
 
