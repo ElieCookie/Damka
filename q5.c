@@ -106,11 +106,17 @@ void PlayGame(Board board, Player starting_player) {
                                 &max_starting_player_captures_count,
                                 &max_opposing_player_captures_count);
 
+        if(starting_won)
+            break;
+
         opposing_won = MakeTurn(board, opposing_player, starting_player, &opposing_pieces,
                                 &starting_pieces, &opposing_player_moves_count,
                                 &curr_starting_piece_count,
                                 &max_opposing_player_captures_count,
                                 &max_starting_player_captures_count);
+
+        if(opposing_won)
+            break;
     }
 }
 

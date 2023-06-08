@@ -15,6 +15,10 @@ int main(){
     Player t_player = 'T';
     Player b_player = 'B';
 
+//    board[6][3] = EMPTY;
+    //board[5][4] = EMPTY;
+//    board[3][4] = BOTTOM_PLAYER;
+
 //    PiecesNum T_pieces = 12;
 //    PiecesNum B_pieces = 12;
 
@@ -36,14 +40,15 @@ int main(){
     //board[4][1] = BOTTOM_PLAYER;
 
 //    checkersPos *src = (checkersPos*) malloc(sizeof(checkersPos));
-//    src->row = 'E';
-//    src->col = '2';
+//    src->row = 'C';
+//    src->col = '4';
 //    SingleSourceMovesTree* tr = FindSingleSourceMoves(board, src);
-//    printf("\nmoves of E2:\n");
+//    printf("\nmoves of C4:\n");
 //    if(tr == NULL)
 //        return 0;
-
+//
 //    PrintSingleSourceMovesTree(tr->source);
+
 //    MultipleSourceMovesList* x = FindAllPossiblePlayerMoves(board, t_player);
 //    Turn(board,t_player, &B_pieces);
 //    Turn(board, t_player, &T_pieces);

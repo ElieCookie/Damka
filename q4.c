@@ -35,13 +35,13 @@ void deleteCapturedCells(Board board, SingleSourceMovesListCell* cellToMove, Pla
 
     if(player == TOP_PLAYER) {
         if(cellToMove->next->position->col - cellToMove->position->col  == 2)  // Moved right
-            board[cellToMove->position->row+1][cellToMove->position->col+1] = EMPTY;
-        else board[cellToMove->position->row+1][cellToMove->position->col-1] = EMPTY;
+            board[cellToMove->position->row - 'A' + 1][cellToMove->position->col - '0'] = EMPTY;
+        else board[cellToMove->position->row - 'A' + 1][cellToMove->position->col - '2'] = EMPTY;
     }
     else {
         if(cellToMove->next->position->col - cellToMove->position->col  == 2)  // Moved right
-            board[cellToMove->position->row-1][cellToMove->position->col+1] = EMPTY;
-        else board[cellToMove->position->row-1][cellToMove->position->col-1] = EMPTY;
+            board[cellToMove->position->row - 'A' -1][cellToMove->position->col - '0'] = EMPTY;
+        else board[cellToMove->position->row - 'A' -1][cellToMove->position->col - '2'] = EMPTY;
     }
     deleteCapturedCells(board, cellToMove->next, player);
 }
