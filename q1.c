@@ -6,9 +6,7 @@ bool isBlockedBySame(Board board, checkersPos *dest, Player player){
     int row = dest->row - 'A';
     int col = dest->col - '0' - 1;
 
-    if(board[row][col] == player)
-        return true;
-    return false;
+    return (board[row][col] == player);
 }
 
 // Params: a game board, a destination position and a player
@@ -17,12 +15,12 @@ bool isBlockedByOther(Board board, checkersPos *dest, Player player){
     int row = dest->row - 'A';
     int col = dest->col - '0' - 1;
 
-    if(((player == 'T') && (board[row][col] == 'B')) || ((player == 'B') && (board[row][col] == 'T')))
-        return true;
-    return false;
+    return(((player == 'T') && (board[row][col] == 'B')) || ((player == 'B') && (board[row][col] == 'T')));
 }
 
-// Params:
+// Params: source position, direction of move, player
+// Finds the destination position of the player according to the source position, and returns it,
+// if no destination was found returns Null
 checkersPos* findDest(checkersPos *src, int direction, Player player){
     checkersPos *dest = (checkersPos*) malloc(sizeof(checkersPos));
     checkMemoryAllocation(dest);
@@ -64,31 +62,33 @@ checkersPos* findDest(checkersPos *src, int direction, Player player){
         return NULL;
 }
 
+
+// Params: a game board, a destination position
+// Checks if the destination position is an empty checker
 bool isEmptyChecker(Board board, checkersPos *dest){
     int row = dest->row - 'A';
     int col = dest->col - '0' - 1;
 
-    if(board[row][col] == EMPTY)
-        return true;
-    return false;
+    return(board[row][col] == EMPTY);
 }
 
+// Params: a game board, a source position
+// Checks if the source position is an empty/white checker
 bool noPlayer(Board board, checkersPos *src){
     int row = src->row - 'A';
     int col = src->col - '0' - 1;
 
-    if(board[row][col] == EMPTY || board[row][col] == WHITE)
-        return true;
-    else
-        return false;
+    return(board[row][col] == EMPTY || board[row][col] == WHITE);
 }
 
+// Params: a source position
+// Checks if the source position is out of the board boundaries
 bool isCorruptedPos(checkersPos *src){
-    if(src->row > 'H' || src->row < 'A' || src->col > '8' || src->col < '1')
-        return true;
-    return false;
+    return(src->row > 'H' || src->row < 'A' || src->col > '8' || src->col < '1');
 }
 
+// Params: a source board, and a pointer to the destination board
+// copies the values from the source board to the destination board
 void copyBoard(Board *dest, Board src){
     for (int row = 0; row < BOARD_SIZE; row++) {
         for (int col = 0; col < BOARD_SIZE; col++) {
@@ -104,6 +104,9 @@ void copyBoard(Board *dest, Board src){
     }
 }
 
+// Params: a board, the source position, a player, and the number of total captures
+// executes the flow of the capturing move, assures that the immediate move after a capture,
+// will do another capture or finish move, then returns the root of the tree
 SingleSourceMovesTreeNode* CaptureFlow(Board board, checkersPos* src, Player player, unsigned short total_captures_so_far) {
     if (noPlayer(board, src) || isCorruptedPos(src))
         return NULL;
@@ -122,7 +125,9 @@ SingleSourceMovesTreeNode* CaptureFlow(Board board, checkersPos* src, Player pla
     checkersPos *dest_left = findDest(src, LEFT, player);
     checkersPos *dest_right = findDest(src, RIGHT, player);
 
+    // handling the left side
     if (isBlockedByOther(board, dest_left, player)) {
+        // the destination after the capture
         checkersPos *cap_dest = findDest(dest_left, LEFT, player);
         // if destination for capture is empty
         if (isEmptyChecker(board, cap_dest)) {
@@ -136,7 +141,9 @@ SingleSourceMovesTreeNode* CaptureFlow(Board board, checkersPos* src, Player pla
         }
     }
 
+    // handling the right side
     if (isBlockedByOther(board, dest_right, player)) {
+        // the destination after the capture
         checkersPos *cap_dest = findDest(dest_right, RIGHT, player);
         if (isEmptyChecker(board, cap_dest)) {
             Board right_board;
@@ -151,7 +158,9 @@ SingleSourceMovesTreeNode* CaptureFlow(Board board, checkersPos* src, Player pla
     return root;
 }
 
-
+// Params: a board, the source position, a player, and the number of total captures
+// executes the regular flow of the move, building a tree with the relevant moves for one turn,
+// then returns the root of the tree
 SingleSourceMovesTreeNode* FindSingleSourceMove(Board board, checkersPos* src, Player player, unsigned short total_captures_so_far) {
     if (noPlayer(board, src) || isCorruptedPos(src))
         return NULL;
@@ -173,6 +182,7 @@ SingleSourceMovesTreeNode* FindSingleSourceMove(Board board, checkersPos* src, P
     // Handle the left side
     if (!isBlockedBySame(board, dest_left, player)) {
         if (isBlockedByOther(board, dest_left, player)) {
+            // the destination after the capture
             checkersPos* cap_dest = findDest(dest_left, LEFT, player);
             // if destination for capture is empty
             if (isEmptyChecker(board, cap_dest)) {
@@ -208,6 +218,7 @@ SingleSourceMovesTreeNode* FindSingleSourceMove(Board board, checkersPos* src, P
     // Handle the right side
     if (!isBlockedBySame(board, dest_right, player)) {
         if (isBlockedByOther(board, dest_right, player)) {
+            // the destination after the capture
             checkersPos* cap_dest = findDest(dest_right, RIGHT, player);
             if (isEmptyChecker(board, cap_dest)) {
                 Board right_board;
@@ -241,6 +252,8 @@ SingleSourceMovesTreeNode* FindSingleSourceMove(Board board, checkersPos* src, P
     return root;
 }
 
+// Params: a board, the source position
+// calls the helper function to build the moves tree
 SingleSourceMovesTree* FindSingleSourceMoves(Board board, checkersPos *src){
     int row = src->row - 'A';
     int col = src->col - '0' - 1;
