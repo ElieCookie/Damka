@@ -4,6 +4,9 @@
 #include "stdlib.h"
 #include "stdio.h"
 #include "stdbool.h"
+#include <string.h>
+#define LEFT 0
+#define RIGHT 1
 #define max(a, b) a > b ? a : b
 
     typedef struct _SingleSourceMovesTreeNode{

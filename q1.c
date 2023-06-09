@@ -1,11 +1,7 @@
 #include "general_settings.h"
-#include <stdio.h>
-#include <stdlib.h>
-#include <stdbool.h>
-#include <string.h>
-#define LEFT 0
-#define RIGHT 1
 
+// Params: a game board, a destination position and a player
+// Checks if the destination position is occupied by a piece of the same player
 bool isBlockedBySame(Board board, checkersPos *dest, Player player){
     int row = dest->row - 'A';
     int col = dest->col - '0' - 1;
@@ -15,6 +11,8 @@ bool isBlockedBySame(Board board, checkersPos *dest, Player player){
     return false;
 }
 
+// Params: a game board, a destination position and a player
+// Checks if the destination position is occupied by a piece of the opposite player
 bool isBlockedByOther(Board board, checkersPos *dest, Player player){
     int row = dest->row - 'A';
     int col = dest->col - '0' - 1;
@@ -24,6 +22,7 @@ bool isBlockedByOther(Board board, checkersPos *dest, Player player){
     return false;
 }
 
+// Params:
 checkersPos* findDest(checkersPos *src, int direction, Player player){
     checkersPos *dest = (checkersPos*) malloc(sizeof(checkersPos));
     checkMemoryAllocation(dest);
