@@ -4,6 +4,7 @@
 #include "general_settings.h"
 
 
+//This function gets a node of a SingleSourceMovesTreeNode and returns the height from this node below.
 int SubTreeHeight (SingleSourceMovesTreeNode* root) {
     int heightLeft, heightRight;
 
@@ -16,8 +17,10 @@ int SubTreeHeight (SingleSourceMovesTreeNode* root) {
 }
 
 
+//This function gets a checkersPos pointer position and unsigned short captures and returns a SingleSourceMovesListCell pointer based on the given data.
 SingleSourceMovesListCell* createMovesListCell(checkersPos* position, unsigned short captures) {
     SingleSourceMovesListCell* cell = (SingleSourceMovesListCell*)malloc(sizeof(SingleSourceMovesListCell));
+    checkMemoryAllocation(cell);
     cell->position = (checkersPos*)malloc(sizeof(checkersPos));
     cell->position->row = position->row;
     cell->position->col = position->col;
@@ -26,6 +29,8 @@ SingleSourceMovesListCell* createMovesListCell(checkersPos* position, unsigned s
     return cell;
 }
 
+
+//This function gets a SingleSourceMovesList list and a SingleSourceMovesListCell cell and adds cell to the end of list.
 void addMovesListCellToEndOfList(SingleSourceMovesList* list, SingleSourceMovesListCell* cell) {
     if (list->head == NULL) {
         list->head = cell;
@@ -36,29 +41,22 @@ void addMovesListCellToEndOfList(SingleSourceMovesList* list, SingleSourceMovesL
     }
 }
 
-void addMovesListCellToStartList(SingleSourceMovesList* list, SingleSourceMovesListCell* cell) {
-    if(isEmptyList(list)) {
-        cell->next = NULL;
-        list->head = list->tail = cell;
-    }
-    else {
-        cell->next = list->head;
-        list->head = cell;
-    }
-}
 
+//This function checks if the MultipleSourceMovesList lst is empty.
 bool isEmptyMultipleList(MultipleSourceMovesList * lst) {
     return lst->tail == NULL;
 }
 
 
-bool isEmptyList(SingleSourceMovesList* lst) {
-    return lst->tail == NULL;
-}
-
+//This function gets a SingleSourceMovesList lst and creates a new MultipleSourceMovesListCell with this lst as a single_source_moves_list and returns cell.
 MultipleSourceMovesListCell* createMultipleSourceMovesListCell(SingleSourceMovesList* lst){
     MultipleSourceMovesListCell* cell = (MultipleSourceMovesListCell*)malloc(sizeof(MultipleSourceMovesListCell));
     cell->single_source_moves_list = lst;
     cell->next = NULL;
     return cell;
+}
+
+
+void makeEmptyMultipleSourceMovesList(MultipleSourceMovesList* lst){
+    lst->head = lst->tail = NULL;
 }

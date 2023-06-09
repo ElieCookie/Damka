@@ -22,6 +22,5 @@ typedef int PiecesNum;
 
 // Function prototypes
 void init_board(Board *board);
-void print_board(Board *board);
 void checkMemoryAllocation(void* ptr);
 #endif //GENERAL_H

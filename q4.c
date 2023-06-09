@@ -40,6 +40,8 @@ void deleteCapturedCells(Board board, SingleSourceMovesListCell* cellToMove, Pla
 }
 
 
+//This function gets a Board, a SingleSourceMovesListCell pointer cellToMove and a Player
+//The function will update the board, so it will move the head of cellToMove to his tail, and clear all values in the middle.
 void moveCell(Board board, SingleSourceMovesListCell* cellToMove, Player player) {
     SingleSourceMovesListCell* temp = cellToMove;
 
@@ -51,6 +53,7 @@ void moveCell(Board board, SingleSourceMovesListCell* cellToMove, Player player)
 }
 
 
+//This function gets a MultipleSourceMovesList pointer playerPossibleMoves and returns the maximum amount of captures in the MultipleSourceMovesListCells inside lst.
 int getMaximumCaptures (MultipleSourceMovesList* playerPossibleMoves) {
     int res = 0;
     MultipleSourceMovesListCell* temp = playerPossibleMoves->head;
@@ -61,6 +64,8 @@ int getMaximumCaptures (MultipleSourceMovesList* playerPossibleMoves) {
     }
     return res;
 }
+
+
 
 SingleSourceMovesListCell * findRelevantCell(MultipleSourceMovesList* lst ,Player player, int captures) {
     MultipleSourceMovesListCell * tempMultiple = lst->head;
@@ -92,6 +97,8 @@ SingleSourceMovesListCell * findRelevantCell(MultipleSourceMovesList* lst ,Playe
     return res;
 }
 
+
+//This function gets a SingleSourceMovesListCell pointer lst which we assume it isn't null and returns TRUE if the next property is not NULL, and FALSE otherwise.
 bool canMove(SingleSourceMovesListCell* lst) {
     return lst->next != NULL;
 }

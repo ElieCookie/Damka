@@ -24,32 +24,8 @@ void init_board(Board *board) {
 }
 
 
-void print_board(Board *board) {
-    // Print the board to the console
-    for (int row = 0; row < BOARD_SIZE; row++) {
-        for (int col = 0; col < BOARD_SIZE; col++) {
-            switch ((*board)[row][col]) {
-                case EMPTY:
-                    printf(" -");
-                    break;
-                case WHITE:
-                    printf(" w");
-                    break;
-                case TOP_PLAYER:
-                    printf(" T");
-                    break;
-                case BOTTOM_PLAYER:
-                    printf(" B");
-                    break;
-                default:
-                    break;
-            }
-        }
-        printf("\n");
-    }
-}
-
 void checkMemoryAllocation(void* ptr) {
+    //This function gets a pointer ptr and checks if he is NULL - if yes exits the program.
     if(ptr == NULL) {
         printf("Memory Allocation Failed");
         exit(1);

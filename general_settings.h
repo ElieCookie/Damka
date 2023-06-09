@@ -5,8 +5,6 @@
 #include "stdio.h"
 #include "stdbool.h"
 #include <string.h>
-#define LEFT 0
-#define RIGHT 1
 #define max(a, b) a > b ? a : b
 
     typedef struct _SingleSourceMovesTreeNode{
@@ -40,18 +38,15 @@
         struct _multipleSourceMovesListCell *head;
         struct _multipleSourceMovesListCell *tail;
     } MultipleSourceMovesList;
-    
-    
-    SingleSourceMovesTree* FindSingleSourceMoves(Board board, checkersPos *src);
 
+
+SingleSourceMovesTree* FindSingleSourceMoves(Board board, checkersPos *src);
     SingleSourceMovesList * FindSingleSourceOptimalMove(SingleSourceMovesTree* moves_tree);
-    void FindSingleSourceOptimalMoveHelper(SingleSourceMovesTreeNode* moves_cell, char player, SingleSourceMovesList* res);
+    void FindSingleSourceOptimalMoveHelper(SingleSourceMovesTreeNode* moves_cell, Player player, SingleSourceMovesList* res);
     int SubTreeHeight (SingleSourceMovesTreeNode* root);
     SingleSourceMovesListCell* createMovesListCell(checkersPos* position, unsigned short captures);
     MultipleSourceMovesListCell* createMultipleSourceMovesListCell(SingleSourceMovesList* lst);
-    bool isEmptyList(SingleSourceMovesList* lst);
     bool isEmptyMultipleList(MultipleSourceMovesList* lst);
-    void addMovesListCellToStartList(SingleSourceMovesList* list, SingleSourceMovesListCell* cell);
     void addMovesListCellToEndOfList(SingleSourceMovesList* list, SingleSourceMovesListCell* cell);
     void addMultipleSourceMovesListCellToStartList(MultipleSourceMovesList* list, MultipleSourceMovesListCell* cell);
     MultipleSourceMovesList* FindAllPossiblePlayerMoves(Board board, Player player);
@@ -64,7 +59,5 @@
     bool canMove(SingleSourceMovesListCell* lst);
     int findHigherSide(int left, int right, Player player);
     checkersPos* findLastDestination(SingleSourceMovesListCell* from);
-#define makeEmptyList(list) { \
-    (*list).head = (*list).tail = NULL;\
-}
+    void makeEmptyMultipleSourceMovesList(MultipleSourceMovesList* lst);
 #endif //GENERAL_SETTINGS_H

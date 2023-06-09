@@ -11,7 +11,7 @@ int main(){
     Player b_player = 'B';
     Player starting_player;
 
-    printf("Enter the player that will start the game: \n");
+    printf("Enter the player that will start the game. T for top player, B for bottom player \n");
     scanf("%c", &starting_player);
 
    PlayGame(board, starting_player);
