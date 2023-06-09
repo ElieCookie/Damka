@@ -21,9 +21,17 @@ void Turn(Board board, Player player) {
     SingleSourceMovesListCell* cellToMove = findRelevantCell(playerPossibleMoves, player, maximumCaptures);
     deleteCapturedCells(board,cellToMove,player);
     moveCell(board,cellToMove,player);
-    int x = 0;
-    printf("The move is from: %c%c, to: %c%c\n", cellToMove->position->row, cellToMove->position->col,
-           cellToMove->next->position->row, cellToMove->next->position->col);
+    checkersPos* dest = findLastDestination(cellToMove);
+    printf("%c%c->%c%c\n", cellToMove->position->row, cellToMove->position->col, dest->row, dest->col);
+}
+
+checkersPos* findLastDestination(SingleSourceMovesListCell* from){
+    SingleSourceMovesListCell* next_move = from->next;
+    while(next_move){
+        if(next_move->next == NULL)
+            return next_move->position;
+        next_move = next_move->next;
+    }
 }
 
 void deleteCapturedCells(Board board, SingleSourceMovesListCell* cellToMove, Player player) {

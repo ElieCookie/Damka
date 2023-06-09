@@ -71,6 +71,7 @@
     void moveCell(Board board, SingleSourceMovesListCell* cellToMove, Player player);
     bool canMove(SingleSourceMovesListCell* lst);
     int findHigherSide(int left, int right, Player player);
+    checkersPos* findLastDestination(SingleSourceMovesListCell* from);
 #define makeEmptyList(list) { \
     (*list).head = (*list).tail = NULL;\
 }
