@@ -34,10 +34,24 @@ void FindSingleSourceOptimalMoveHelper(SingleSourceMovesTreeNode* moves_cell, ch
             FindSingleSourceOptimalMoveHelper(moves_cell->next_move[0], player, res);
         else {
             if(player == TOP_PLAYER)
-                FindSingleSourceOptimalMoveHelper(moves_cell->next_move[1], player, res);
+                FindSingleSourceOptimalMoveHelper(moves_cell->next_move[findHigherSide(moves_cell->next_move[0]->total_captures_so_far, moves_cell->next_move[1]->total_captures_so_far, player)], player, res);
             else
-                FindSingleSourceOptimalMoveHelper(moves_cell->next_move[0], player, res);
+                FindSingleSourceOptimalMoveHelper(moves_cell->next_move[findHigherSide(moves_cell->next_move[0]->total_captures_so_far, moves_cell->next_move[1]->total_captures_so_far, player)], player, res);
 
         }
+    }
+}
+
+
+
+int findHigherSide(int left, int right, Player player) {
+    if (left > right)
+        return LEFT;
+    else if(right > left)
+        return RIGHT;
+    else {
+        if(player == TOP_PLAYER)
+            return RIGHT;
+        else return LEFT;
     }
 }

@@ -70,6 +70,7 @@
     void PlayGame(Board board, Player starting_player);
     void moveCell(Board board, SingleSourceMovesListCell* cellToMove, Player player);
     bool canMove(SingleSourceMovesListCell* lst);
+    int findHigherSide(int left, int right, Player player);
 #define makeEmptyList(list) { \
     (*list).head = (*list).tail = NULL;\
 }

@@ -12,6 +12,8 @@
 #define BOTTOM_PLAYER 'B'
 #define UP 'U'
 #define DOWN 'D'
+#define LEFT 0
+#define RIGHT 1
 
 typedef struct _checkersPos{
     char row, col;
