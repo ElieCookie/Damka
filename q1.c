@@ -95,8 +95,6 @@ void copyBoard(Board *dest, Board src){
         for (int col = 0; col < BOARD_SIZE; col++) {
             if(src[row][col] == EMPTY)
                 (*dest)[row][col] = EMPTY;
-            else if (src[row][col] == GRAY)
-                (*dest)[row][col] = GRAY;
             else if (src[row][col] == WHITE)
                 (*dest)[row][col] = WHITE;
             else if (src[row][col] == TOP_PLAYER)
@@ -172,7 +170,6 @@ SingleSourceMovesTreeNode* FindSingleSourceMove(Board board, checkersPos* src, P
 
     checkersPos* dest_left = findDest(src, LEFT, player);
     checkersPos* dest_right = findDest(src, RIGHT, player);
-    int capture_made = 0; // Flag to track if a capture was made
 
     // Handle the left side
     if (!isBlockedBySame(board, dest_left, player)) {
@@ -245,163 +242,6 @@ SingleSourceMovesTreeNode* FindSingleSourceMove(Board board, checkersPos* src, P
     return root;
 }
 
-
-
-//SingleSourceMovesTreeNode* FindSingleSourceMove(Board board, checkersPos* src, Player player, unsigned short total_captures_so_far) {
-//    if (noPlayer(board, src) || isCorruptedPos(src))
-//        return NULL;
-//
-//    SingleSourceMovesTreeNode* root = (SingleSourceMovesTreeNode*)malloc(sizeof(SingleSourceMovesTreeNode));
-//    checkMemoryAllocation(root);
-//
-//    // Copy the board to the root node
-//    copyBoard(&root->board, board);
-//
-//    root->pos = src;
-//    root->next_move[LEFT] = NULL;
-//    root->next_move[RIGHT] = NULL;
-//    root->total_captures_so_far = total_captures_so_far;
-//
-//    checkersPos* dest_left = findDest(src, LEFT, player);
-//    checkersPos* dest_right = findDest(src, RIGHT, player);
-//
-//    // Handle the left side
-//    if (!isBlockedBySame(board, dest_left, player)) {
-//        if (isBlockedByOther(board, dest_left, player)) {
-//            checkersPos* cap_dest = findDest(dest_left, LEFT, player);
-//            if (isEmptyChecker(board, cap_dest)) {
-//                Board left_board;
-//                copyBoard(&left_board, board);
-//                left_board[src->row - 'A'][src->col - '0' - 1] = EMPTY;
-//                left_board[cap_dest->row - 'A'][cap_dest->col - '0' - 1] = player;
-//                left_board[dest_left->row - 'A'][dest_left->col - '0' - 1] = EMPTY;
-//
-//                root->next_move[LEFT] = FindSingleSourceMove(left_board, cap_dest, player, total_captures_so_far + 1);
-//            }
-//        } else if (isEmptyChecker(board, dest_left)) {
-//            Board left_board;
-//            copyBoard(&left_board, board);
-//            left_board[src->row - 'A'][src->col - '0' - 1] = EMPTY;
-//            left_board[dest_left->row - 'A'][dest_left->col - '0' - 1] = player;
-//
-//            SingleSourceMovesTreeNode* left_node = (SingleSourceMovesTreeNode*)malloc(sizeof(SingleSourceMovesTreeNode));
-//            checkMemoryAllocation(left_node);
-//
-//            // Copy the board to the left node
-//            copyBoard(&left_node->board, left_board);
-//
-//            left_node->pos = dest_left;
-//            left_node->next_move[LEFT] = NULL;
-//            left_node->next_move[RIGHT] = NULL;
-//            left_node->total_captures_so_far = total_captures_so_far;
-//
-//            root->next_move[LEFT] = left_node;
-//        }
-//    }
-//
-//    // Handle the right side
-//    if (!isBlockedBySame(board, dest_right, player)) {
-//        if (isBlockedByOther(board, dest_right, player)) {
-//            checkersPos* cap_dest = findDest(dest_right, RIGHT, player);
-//            if (isEmptyChecker(board, cap_dest)) {
-//                Board right_board;
-//                copyBoard(&right_board, board);
-//                right_board[cap_dest->row - 'A'][cap_dest->col - '0' - 1] = player;
-//                right_board[src->row - 'A'][src->col - '0' - 1] = EMPTY;
-//                right_board[dest_right->row - 'A'][dest_right->col - '0' - 1] = EMPTY;
-//
-//                root->next_move[RIGHT] = FindSingleSourceMove(right_board, cap_dest, player, total_captures_so_far + 1);
-//            }
-//        } else if (isEmptyChecker(board, dest_right)) {
-//            Board right_board;
-//            copyBoard(&right_board, board);
-//            right_board[src->row - 'A'][src->col - '0' - 1] = EMPTY;
-//            right_board[dest_right->row - 'A'][dest_right->col - '0' - 1] = player;
-//
-//            SingleSourceMovesTreeNode* right_node = (SingleSourceMovesTreeNode*)malloc(sizeof(SingleSourceMovesTreeNode));
-//            checkMemoryAllocation(right_node);
-//
-//            // Copy the board to the right node
-//            copyBoard(&right_node->board, right_board);
-//
-//            right_node->pos = dest_right;
-//            right_node->next_move[LEFT] = NULL;
-//            right_node->next_move[RIGHT] = NULL;
-//            right_node->total_captures_so_far = total_captures_so_far;
-//
-//            root->next_move[RIGHT] = right_node;
-//        }
-//    }
-//
-//    return root;
-//}
-
-//SingleSourceMovesTreeNode* FindSingleSourceMove(Board board, checkersPos *src, Player player,
-//                                                unsigned short total_captures_so_far){
-//    if(noPlayer(board, src) || isCorruptedPos(src))
-//        return NULL;
-//    SingleSourceMovesTreeNode* left = NULL;
-//    SingleSourceMovesTreeNode* right = NULL;
-//    checkersPos* dest_left = findDest(src, LEFT, player);
-//    checkersPos* dest_right = findDest(src, RIGHT, player);
-//
-//    /// left side
-//    if(isBlockedBySame(board, dest_left, player))
-//        left = NULL;
-//    else if(isBlockedByOther(board, dest_left, player))
-//    {
-//        checkersPos* cap_dest = findDest(dest_left, LEFT,player);
-//        if(isEmptyChecker(board, cap_dest)) {
-//            board[src->row - 'A'][src->col - '0' - 1] = EMPTY;
-//            board[cap_dest->row - 'A'][cap_dest->col - '0' - 1] = player;
-//            board[dest_left->row - 'A'][dest_left->col - '0' - 1] = EMPTY;
-//            left = FindSingleSourceMove(board, cap_dest, player, total_captures_so_far + 1);
-//        }
-//        else
-//            left = NULL;
-//    }
-//    else if(isEmptyChecker(board, dest_left)) {
-//        board[src->row - 'A'][src->col - '0' - 1] = EMPTY;
-//        board[dest_left->row - 'A'][dest_left->col - '0' - 1] = player;
-//
-//        left = (SingleSourceMovesTreeNode*) malloc(sizeof(SingleSourceMovesTreeNode));
-//        left->pos = dest_left;
-//        left->total_captures_so_far = total_captures_so_far;
-//    }
-//    /// right side
-//    if(isBlockedBySame(board, dest_right, player))
-//        right = NULL;
-//    else if(isBlockedByOther(board, dest_right, player))
-//    {
-//        checkersPos* cap_dest = findDest(dest_right, RIGHT, player);
-//        if(isEmptyChecker(board, cap_dest)) {
-//            board[cap_dest->row - 'A'][cap_dest->col - '0' - 1] = player;
-//            board[src->row - 'A'][src->col - '0' - 1] = EMPTY;
-//            board[dest_right->row - 'A'][dest_right->col - '0' - 1] = EMPTY;
-//            right = FindSingleSourceMove(board, cap_dest, player, total_captures_so_far + 1);
-//        }
-//        else
-//            right = NULL;
-//    }
-//    else if(isEmptyChecker(board, dest_right)) {
-//        board[src->row - 'A'][src->col - '0' - 1] = EMPTY;
-//        board[dest_right->row - 'A'][dest_right->col - '0' - 1] = player;
-//
-//        right = (SingleSourceMovesTreeNode*) malloc(sizeof(SingleSourceMovesTreeNode));
-//        right->pos = dest_right;
-//        right->total_captures_so_far = total_captures_so_far;
-//    }
-//    SingleSourceMovesTreeNode* root = (SingleSourceMovesTreeNode*) malloc(sizeof(SingleSourceMovesTreeNode));
-//    checkMemoryAllocation(root);
-//
-//    copyBoard(&root->board, board);
-//    root->pos = src;
-//    root->next_move[LEFT] = left;
-//    root->next_move[RIGHT] = right;
-//    root->total_captures_so_far = total_captures_so_far;
-//    return root;
-//}
-
 SingleSourceMovesTree* FindSingleSourceMoves(Board board, checkersPos *src){
     int row = src->row - 'A';
     int col = src->col - '0' - 1;
@@ -412,17 +252,4 @@ SingleSourceMovesTree* FindSingleSourceMoves(Board board, checkersPos *src){
     unsigned short total_captures_so_far = 0;
     tree->source = FindSingleSourceMove(board, src, board[row][col], total_captures_so_far);
     return tree;
-}
-
-void PrintSingleSourceMovesTree(SingleSourceMovesTreeNode* node){
-    if(node == NULL)
-        return;
-
-    if(node->pos == NULL)
-        return;
-
-    printf("move: %c%c, total captures: %d\n", node->pos->row, node->pos->col, node->total_captures_so_far);
-    print_board(node->board);
-    PrintSingleSourceMovesTree(node->next_move[LEFT]);
-    PrintSingleSourceMovesTree(node->next_move[RIGHT]);
 }

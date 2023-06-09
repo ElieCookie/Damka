@@ -32,9 +32,6 @@ void print_board(Board *board) {
                 case EMPTY:
                     printf(" -");
                     break;
-                case GRAY:
-                    printf(" g");
-                    break;
                 case WHITE:
                     printf(" w");
                     break;

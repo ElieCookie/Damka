@@ -6,12 +6,9 @@
 
 // Piece constants
 #define EMPTY 'E'
-#define GRAY 'g'
 #define WHITE 'w'
 #define TOP_PLAYER 'T'
 #define BOTTOM_PLAYER 'B'
-#define UP 'U'
-#define DOWN 'D'
 #define LEFT 0
 #define RIGHT 1
 
@@ -26,8 +23,5 @@ typedef int PiecesNum;
 // Function prototypes
 void init_board(Board *board);
 void print_board(Board *board);
-int is_valid_move(Board *board, Player player, int from_row, int from_col, int to_row, int to_col);
-void make_move(Board *board, Player player, int from_row, int from_col, int to_row, int to_col);
-int is_game_over(Board *board, Player player);
 void checkMemoryAllocation(void* ptr);
 #endif //GENERAL_H

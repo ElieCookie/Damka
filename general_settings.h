@@ -17,13 +17,6 @@
         SingleSourceMovesTreeNode *source;
     }SingleSourceMovesTree;
 
-    typedef struct _Piece{
-        checkersPos *pos; // position in the board
-        Player player;
-        SingleSourceMovesTree moves;
-        unsigned char direction;
-    }Piece;
-
     typedef struct _SingleSourceMovesListCell {
         checkersPos* position;
         unsigned short captures;
@@ -46,11 +39,7 @@
     } MultipleSourceMovesList;
     
     
-
-    void initPieces(Piece *pieces, Player p, unsigned char direction, Board board);
-    void print_all_pieces(Piece *pieces, PiecesNum num);
     SingleSourceMovesTree* FindSingleSourceMoves(Board board, checkersPos *src);
-    void PrintSingleSourceMovesTree(SingleSourceMovesTreeNode* node);
 
     SingleSourceMovesList * FindSingleSourceOptimalMove(SingleSourceMovesTree* moves_tree);
     void FindSingleSourceOptimalMoveHelper(SingleSourceMovesTreeNode* moves_cell, char player, SingleSourceMovesList* res);
