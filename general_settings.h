@@ -40,7 +40,7 @@
     } MultipleSourceMovesList;
 
 
-SingleSourceMovesTree* FindSingleSourceMoves(Board board, checkersPos *src);
+    SingleSourceMovesTree* FindSingleSourceMoves(Board board, checkersPos *src);
     SingleSourceMovesList * FindSingleSourceOptimalMove(SingleSourceMovesTree* moves_tree);
     void FindSingleSourceOptimalMoveHelper(SingleSourceMovesTreeNode* moves_cell, Player player, SingleSourceMovesList* res);
     int SubTreeHeight (SingleSourceMovesTreeNode* root);

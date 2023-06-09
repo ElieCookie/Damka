@@ -1,10 +1,7 @@
-//
-// Created by Lidor Levi on 13/05/2023.
-//
-
 #include "general_settings.h"
 
-//This function gets a SingleSourceMovesTree pointer moves_tree and finds the optimal move from the tree using the helper function FindSingleSourceOptimalMoveHelper
+//This function gets a SingleSourceMovesTree pointer moves_tree and finds the optimal move
+// from the tree using the helper function FindSingleSourceOptimalMoveHelper
 SingleSourceMovesList * FindSingleSourceOptimalMove(SingleSourceMovesTree* moves_tree) {
     SingleSourceMovesList* res = calloc(1, sizeof (SingleSourceMovesList));
     checkMemoryAllocation(res);
@@ -15,7 +12,8 @@ SingleSourceMovesList * FindSingleSourceOptimalMove(SingleSourceMovesTree* moves
 
 
 //This function gets SingleSourceMovesTreeNode pointer moves_cell, a Player and  a SingleSourceMovesList pointer res.
-//The function is a helper function to FindSingleSourceOptimalMove. it finds the optimal SingleSourceMovesTreeNode move from the original SingleSourceMovesTree and adds that to res
+//The function is a helper function to FindSingleSourceOptimalMove.
+// it finds the optimal SingleSourceMovesTreeNode move from the original SingleSourceMovesTree and adds that to res
 void FindSingleSourceOptimalMoveHelper(SingleSourceMovesTreeNode* moves_cell, Player player, SingleSourceMovesList* res) {
     if(moves_cell == NULL)
         return;
@@ -34,13 +32,17 @@ void FindSingleSourceOptimalMoveHelper(SingleSourceMovesTreeNode* moves_cell, Pl
         else if(leftHeight > rightHeight)
             FindSingleSourceOptimalMoveHelper(moves_cell->next_move[0], player, res);
         else
-                FindSingleSourceOptimalMoveHelper(moves_cell->next_move[findHigherSide(moves_cell->next_move[0]->total_captures_so_far, moves_cell->next_move[1]->total_captures_so_far, player)], player, res);
+                FindSingleSourceOptimalMoveHelper(
+                        moves_cell->next_move[findHigherSide(
+                                moves_cell->next_move[0]->total_captures_so_far,
+                                moves_cell->next_move[1]->total_captures_so_far, player)], player, res);
     }
 }
 
 
 //This function gets 2 integer numbers, left and right and a player
-//The function returns the higher size, if they equal, it returns RIGHT if the player is TOP_PLAYER otherwise it returns LEFT.
+//The function returns the higher size, if they equal,
+// it returns RIGHT if the player is TOP_PLAYER otherwise it returns LEFT.
 int findHigherSide(int left, int right, Player player) {
     if (left > right)
         return LEFT;

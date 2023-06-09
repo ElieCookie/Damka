@@ -1,5 +1,6 @@
 #include "general_settings.h"
 
+// The function conducts a turn of a given player
 void Turn(Board board, Player player) {
     MultipleSourceMovesList* playerPossibleMoves = FindAllPossiblePlayerMoves(board,player);
     int maximumCaptures = getMaximumCaptures(playerPossibleMoves);
@@ -10,6 +11,7 @@ void Turn(Board board, Player player) {
     printf("%c%c->%c%c\n", cellToMove->position->row, cellToMove->position->col, dest->row, dest->col);
 }
 
+// The function finds the final destination of a player in a given SingleSourceMovesListCell, and returns the position
 checkersPos* findLastDestination(SingleSourceMovesListCell* from){
     SingleSourceMovesListCell* next_move = from->next;
     while(next_move){
@@ -19,11 +21,10 @@ checkersPos* findLastDestination(SingleSourceMovesListCell* from){
     }
 }
 
+// The function deletes the captured pieces from the board according to the given SingleSourceMovesListCell
 void deleteCapturedCells(Board board, SingleSourceMovesListCell* cellToMove, Player player) {
-    // added here cellToMove->next == NULL
     if(cellToMove == NULL || cellToMove->next == NULL) return;
 
-    // added here cellToMove->next != NULL
     if(cellToMove->next != NULL && cellToMove->next->captures == 0) return;
 
     if(player == TOP_PLAYER) {
@@ -53,7 +54,8 @@ void moveCell(Board board, SingleSourceMovesListCell* cellToMove, Player player)
 }
 
 
-//This function gets a MultipleSourceMovesList pointer playerPossibleMoves and returns the maximum amount of captures in the MultipleSourceMovesListCells inside lst.
+//This function gets a MultipleSourceMovesList pointer playerPossibleMoves
+// and returns the maximum amount of captures in the MultipleSourceMovesListCells inside lst.
 int getMaximumCaptures (MultipleSourceMovesList* playerPossibleMoves) {
     int res = 0;
     MultipleSourceMovesListCell* temp = playerPossibleMoves->head;
@@ -69,7 +71,7 @@ int getMaximumCaptures (MultipleSourceMovesList* playerPossibleMoves) {
 
 SingleSourceMovesListCell * findRelevantCell(MultipleSourceMovesList* lst ,Player player, int captures) {
     MultipleSourceMovesListCell * tempMultiple = lst->head;
-    SingleSourceMovesList* tempSingle = tempMultiple->single_source_moves_list;;
+    SingleSourceMovesList* tempSingle = tempMultiple->single_source_moves_list;
     SingleSourceMovesListCell* res = NULL;
     while (tempMultiple != NULL) {
         tempSingle = tempMultiple->single_source_moves_list;
@@ -98,7 +100,8 @@ SingleSourceMovesListCell * findRelevantCell(MultipleSourceMovesList* lst ,Playe
 }
 
 
-//This function gets a SingleSourceMovesListCell pointer lst which we assume it isn't null and returns TRUE if the next property is not NULL, and FALSE otherwise.
+//This function gets a SingleSourceMovesListCell pointer lst which we assume it isn't null
+// and returns TRUE if the next property is not NULL, and FALSE otherwise.
 bool canMove(SingleSourceMovesListCell* lst) {
     return lst->next != NULL;
 }

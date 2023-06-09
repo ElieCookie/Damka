@@ -1,6 +1,6 @@
 #include "general_settings.h"
 
-//This function gets a MultipleSourceMovesList pointer list and a  MultipleSourceMovesListCell pointer cell
+//This function gets a MultipleSourceMovesList pointer list and a MultipleSourceMovesListCell pointer cell
 //The function adds cell to the beginning of list.
 void addMultipleSourceMovesListCellToStartList(MultipleSourceMovesList* list, MultipleSourceMovesListCell* cell) {
     if(isEmptyMultipleList(list)) {
