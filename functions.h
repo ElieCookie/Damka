@@ -58,4 +58,8 @@
     int findHigherSide(int left, int right, Player player);
     checkersPos* findLastDestination(SingleSourceMovesListCell* from);
     void makeEmptyMultipleSourceMovesList(MultipleSourceMovesList* lst);
+    void freeTree(SingleSourceMovesTree* tr);
+    void freeTreeHelper(SingleSourceMovesTreeNode * root);
+    void freeMultipleSourceMovesList(MultipleSourceMovesList* list);
+    void freeSingleSourceMovesList(SingleSourceMovesList * list);
 #endif //GENERAL_FUNCTIONS_H

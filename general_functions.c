@@ -54,6 +54,58 @@ MultipleSourceMovesListCell* createMultipleSourceMovesListCell(SingleSourceMoves
 }
 
 
+//This function makes the MultipleSourceMovesList lst an empty list.
 void makeEmptyMultipleSourceMovesList(MultipleSourceMovesList* lst){
     lst->head = lst->tail = NULL;
+}
+
+
+//This function free all elements in the SingleSourceMovesTree tr.
+void freeTree(SingleSourceMovesTree* tr){
+    freeTreeHelper(tr->source);
+    free(tr);
+}
+
+
+//This function is a helper function to freeTree, it frees all elements in the SingleSourceMovesTree tr.
+void freeTreeHelper(SingleSourceMovesTreeNode * root){
+    if (root == NULL)
+        return;
+    else
+    {
+        freeTreeHelper(root->next_move[0]);
+        freeTreeHelper(root->next_move[1]);
+        free(root);
+    }
+}
+
+
+//This function frees all elements inside the MultipleSourceMovesList list
+void freeMultipleSourceMovesList(MultipleSourceMovesList* list){
+    MultipleSourceMovesListCell* temp = list->head;
+    MultipleSourceMovesListCell* next = list->head->next;
+    while(next != NULL){
+        freeSingleSourceMovesList(temp->single_source_moves_list);
+        free(temp);
+        temp = next;
+        next = next->next;
+    }
+    free(temp);
+    free(next);
+}
+
+
+//This function frees all elements inside the SingleSourceMovesList list
+void freeSingleSourceMovesList(SingleSourceMovesList * list){
+    SingleSourceMovesListCell * temp = list->head;
+    SingleSourceMovesListCell * next = list->head->next;
+    while(next != NULL){
+        free(temp->position);
+        free(temp);
+        temp = next;
+        next = next->next;
+    }
+    free(temp);
+    free(next);
+
 }

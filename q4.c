@@ -9,6 +9,7 @@ void Turn(Board board, Player player) {
     moveCell(board,cellToMove,player);
     checkersPos* dest = findLastDestination(cellToMove);
     printf("%c%c->%c%c\n", cellToMove->position->row, cellToMove->position->col, dest->row, dest->col);
+    freeMultipleSourceMovesList(playerPossibleMoves);
 }
 
 // The function finds the final destination of a player in a given SingleSourceMovesListCell, and returns the position

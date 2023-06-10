@@ -28,6 +28,7 @@ MultipleSourceMovesList* FindAllPossiblePlayerMoves(Board board, Player player) 
                 src.col = col + '1';
                 SingleSourceMovesTree* tr = FindSingleSourceMoves(board, &src);
                 addMultipleSourceMovesListCellToStartList(res, createMultipleSourceMovesListCell(FindSingleSourceOptimalMove(tr)));
+                freeTree(tr);
             }
         }
     }
