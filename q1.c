@@ -1,4 +1,4 @@
-#include "general_settings.h"
+#include "functions.h"
 
 // Params: a game board, a destination position and a player
 // Checks if the destination position is occupied by a piece of the same player

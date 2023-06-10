@@ -1,4 +1,4 @@
-#include "general_settings.h"
+#include "functions.h"
 
 // Params: a board
 // Prints the current status of the board

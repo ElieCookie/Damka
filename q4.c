@@ -1,4 +1,4 @@
-#include "general_settings.h"
+#include "functions.h"
 
 // The function conducts a turn of a given player and updates the board,
 void Turn(Board board, Player player) {

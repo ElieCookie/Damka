@@ -1,7 +1,4 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include "general.h"
-#include "general_settings.h"
+#include "functions.h"
 
 
 //This function gets a node of a SingleSourceMovesTreeNode and returns the height from this node below.

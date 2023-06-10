@@ -1,8 +1,6 @@
-#ifndef GENERAL_SETTINGS_H
-#define GENERAL_SETTINGS_H
+#ifndef GENERAL_FUNCTIONS_H
+#define GENERAL_FUNCTIONS_H
 #include "general.h"
-#include "stdlib.h"
-#include "stdio.h"
 #include "stdbool.h"
 #include <string.h>
 #define max(a, b) a > b ? a : b
@@ -60,4 +58,4 @@
     int findHigherSide(int left, int right, Player player);
     checkersPos* findLastDestination(SingleSourceMovesListCell* from);
     void makeEmptyMultipleSourceMovesList(MultipleSourceMovesList* lst);
-#endif //GENERAL_SETTINGS_H
+#endif //GENERAL_FUNCTIONS_H

@@ -1,4 +1,4 @@
-#include "general_settings.h"
+#include "functions.h"
 
 //This function gets a SingleSourceMovesTree pointer moves_tree and finds the optimal move
 // from the tree using the helper function FindSingleSourceOptimalMoveHelper

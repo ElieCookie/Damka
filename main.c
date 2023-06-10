@@ -1,5 +1,5 @@
 #include "general.h"
-#include "general_settings.h"
+#include "functions.h"
 
 int main(){
     // Initialize the board
@@ -11,11 +11,11 @@ int main(){
     Player b_player = 'B';
     Player starting_player;
 
-    printf("Enter the player that will start the game. T for top player, B for bottom player \n");
+    printf("Enter the player that will start the game. T for top player, B for bottom player: \n");
     scanf("%c", &starting_player);
 
    PlayGame(board, starting_player);
-    return 0;
+   return 0;
 }
 
 

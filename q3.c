@@ -1,4 +1,4 @@
-#include "general_settings.h"
+#include "functions.h"
 
 //This function gets a MultipleSourceMovesList pointer list and a MultipleSourceMovesListCell pointer cell
 //The function adds cell to the beginning of list.

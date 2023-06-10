@@ -1,6 +1,4 @@
 #include "general.h"
-#include <stdio.h>
-#include <stdlib.h>
 
 void init_board(Board *board) {
     // Initialize the board to its starting position:
