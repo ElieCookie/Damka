@@ -1,0 +1,26 @@
+# ninja log v5
+4	170	1686315815836017961	CMakeFiles/Damka_Project.dir/q5.c.o	c83031a5e65cb3eb
+170	212	1686315815880914198	Damka_Project	bc48ff19db47de8e
+3	170	1686315815835063501	CMakeFiles/Damka_Project.dir/q3.c.o	4844c3110539c7cf
+2	170	1686315815837614922	CMakeFiles/Damka_Project.dir/q1.c.o	738b4faef75bc62f
+3	169	1686315815835412585	CMakeFiles/Damka_Project.dir/q2.c.o	82ef7e7610e53e5b
+4	170	1686315815836274711	CMakeFiles/Damka_Project.dir/q4.c.o	873e5b0bbf360710
+1	169	1686315815835038085	CMakeFiles/Damka_Project.dir/game.c.o	3a9a16fd9de6fa75
+1	170	1686315815835083251	CMakeFiles/Damka_Project.dir/general.c.o	4f9e1d56c61d10af
+2	170	1686315815835368793	CMakeFiles/Damka_Project.dir/general_settings.c.o	85dbb9a81f006435
+0	182	1686319536682704310	CMakeFiles/Damka_Project.dir/game.c.o	3a9a16fd9de6fa75
+2	182	1686319536682871725	CMakeFiles/Damka_Project.dir/q2.c.o	82ef7e7610e53e5b
+3	182	1686319536683642053	CMakeFiles/Damka_Project.dir/q5.c.o	c83031a5e65cb3eb
+2	182	1686319536682797309	CMakeFiles/Damka_Project.dir/general_settings.c.o	85dbb9a81f006435
+2	182	1686319536682778018	CMakeFiles/Damka_Project.dir/q3.c.o	4844c3110539c7cf
+2	183	1686319536683439679	CMakeFiles/Damka_Project.dir/q4.c.o	873e5b0bbf360710
+2	183	1686319536685710079	CMakeFiles/Damka_Project.dir/q1.c.o	738b4faef75bc62f
+183	226	1686319536729310669	Damka_Project	bc48ff19db47de8e
+0	43	1686319661886877867	CMakeFiles/Damka_Project.dir/q5.c.o	c83031a5e65cb3eb
+44	73	1686319661917587679	Damka_Project	bc48ff19db47de8e
+2	162	1686326450237820564	CMakeFiles/Damka_Project.dir/q1.c.o	738b4faef75bc62f
+0	162	1686326450236661521	CMakeFiles/Damka_Project.dir/q5.c.o	c83031a5e65cb3eb
+162	202	1686326450278660439	Damka_Project	bc48ff19db47de8e
+1	150	1686328558380955314	CMakeFiles/Damka_Project.dir/q5.c.o	c83031a5e65cb3eb
+0	150	1686328558382177059	CMakeFiles/Damka_Project.dir/q1.c.o	738b4faef75bc62f
+150	191	1686328558423555016	Damka_Project	bc48ff19db47de8e
