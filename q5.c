@@ -78,7 +78,11 @@ bool MakeTurn(Board board, Player p1, Player p2, PiecesNum *p2_pieces, int *p1_m
         printf("%c wins!\n%c performed %d moves.\n", p1,
                p1, *p1_moves_count);
 
-        if(*max_p1_captures_count > *max_p2_captures_count)
+        if(*max_p1_captures_count == *max_p2_captures_count)
+            printf("%c and %c performed both the highest number of captures in a single move - %d\n",
+                   p1, p2, *max_p1_captures_count);
+
+        else if(*max_p1_captures_count > *max_p2_captures_count)
             printf("%c performed the highest number of captures in a single move - %d\n",
                    p1, *max_p1_captures_count);
         else
