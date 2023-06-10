@@ -56,7 +56,7 @@
     SingleSourceMovesListCell* findRelevantCell(MultipleSourceMovesList* lst ,Player player, int captures);
     void PlayGame(Board board, Player starting_player);
     void moveCell(Board board, SingleSourceMovesListCell* cellToMove, Player player);
-    bool canMove(SingleSourceMovesListCell* lst);
+    bool canMove(SingleSourceMovesListCell* cell);
     int findHigherSide(int left, int right, Player player);
     checkersPos* findLastDestination(SingleSourceMovesListCell* from);
     void makeEmptyMultipleSourceMovesList(MultipleSourceMovesList* lst);

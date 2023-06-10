@@ -1,6 +1,6 @@
 #include "general_settings.h"
 
-// The function conducts a turn of a given player
+// The function conducts a turn of a given player and updates the board,
 void Turn(Board board, Player player) {
     MultipleSourceMovesList* playerPossibleMoves = FindAllPossiblePlayerMoves(board,player);
     int maximumCaptures = getMaximumCaptures(playerPossibleMoves);
@@ -68,40 +68,41 @@ int getMaximumCaptures (MultipleSourceMovesList* playerPossibleMoves) {
 }
 
 
-
+//This function finds the cell inside each of the SingleSourceMovesLists that is in each of the MultipleSourceMovesListCell lst which is
+//The relevant cell that should be moved.
 SingleSourceMovesListCell * findRelevantCell(MultipleSourceMovesList* lst ,Player player, int captures) {
     MultipleSourceMovesListCell * tempMultiple = lst->head;
-    SingleSourceMovesList* tempSingle = tempMultiple->single_source_moves_list;
+    SingleSourceMovesList* tempSingle;
     SingleSourceMovesListCell* res = NULL;
-    while (tempMultiple != NULL) {
+    while (tempMultiple != NULL) { // Go over all MultipleSourceMovesListCells inside lst
         tempSingle = tempMultiple->single_source_moves_list;
-        if(canMove(tempSingle->head)) {
-            if (tempSingle->tail->captures == captures) {
-                if (player == TOP_PLAYER) {
-                    if (res == NULL)
-                        res = tempSingle->head;
-                    else if (tempSingle->head->position->row == res->position->row)
+            if (canMove(tempSingle->head) && tempSingle->tail->captures == captures) { //Checks if the SingleSourceMovesList tempSingle
+                //If we can move during the tempSingle list, and the tail of the list has the same amount of captures as needed.
+                if(res == NULL)
+                    res = tempSingle->head;
+                // If res isn't NULL than we update res values based on the given conditions in the question
+                //TOP_PLAYER prefers move from the rightest side of the board to the lefter side
+                //BOTTOM_PLAYER prefers to move from the lefter side of the board to the righter side
+                else if (player == TOP_PLAYER) {
+                    if (tempSingle->head->position->row == res->position->row)
                         res = tempSingle->head->position->col > res->position->col ? tempSingle->head : res;
                     else
                         res = tempSingle->head->position->row > res->position->row ? tempSingle->head : res;
                 } else {
-                    if (res == NULL)
-                        res = tempSingle->head;
-                    else if (tempSingle->head->position->row == res->position->row)
+                    if (tempSingle->head->position->row == res->position->row)
                         res = tempSingle->head->position->col > res->position->col ? res : tempSingle->head;
                     else
                         res = tempSingle->head->position->row > res->position->row ? res : tempSingle->head;
                 }
             }
-        }
         tempMultiple = tempMultiple->next;
     }
     return res;
 }
 
 
-//This function gets a SingleSourceMovesListCell pointer lst which we assume it isn't null
+//This function gets a SingleSourceMovesListCell pointer cell which we assume it isn't null
 // and returns TRUE if the next property is not NULL, and FALSE otherwise.
-bool canMove(SingleSourceMovesListCell* lst) {
-    return lst->next != NULL;
+bool canMove(SingleSourceMovesListCell* cell) {
+    return cell->next != NULL;
 }
